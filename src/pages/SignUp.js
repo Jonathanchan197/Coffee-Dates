@@ -35,20 +35,20 @@ const SignUp = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <br/>
+        <br />
         <input
           type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <br/>
-        <input type="checkbox"/>
+        <br />
+        <input type="checkbox" />
         I am a mentor
-        <br/>
+        <br />
         <button type={"submit"}>Sign Up</button>
-    </form>
+      </form>
     </div>
-    );
+  );
 };
 
 export default SignUp;
