@@ -3,9 +3,12 @@ import ReactDOM from "react-dom/client";
 import { AuthProvider } from "./auth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
+import App from "./App";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Profile from "./pages/Profile";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +19,14 @@ root.render(
           <Route index element={<Home />} />
           <Route path={"sign-up"} element={<SignUp />} />
           <Route path={"sign-in"} element={<SignIn />} />
+          <Route
+            path={"profile"}
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
