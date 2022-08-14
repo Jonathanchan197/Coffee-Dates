@@ -7,10 +7,14 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
     const register = await auth.register(email, password);
+    console.log(name);
+    console.log(surname);
   
 
     if (register.error) {
@@ -28,9 +32,16 @@ const SignUp = () => {
       <NavBar />
 
       {message && message}
-      <h1>This is register</h1>
+      <h1>Register today! Or else.</h1>
 
       <form onSubmit={handleRegister}>
+
+        <p>Name</p>
+        <input onChange={(e) => setName(e.target.value)}/>
+
+        <p>Surname</p>
+        <input onChange={(e) => setSurname(e.target.value)}/>
+
         <p>Email</p>
         <input
           type="email"
@@ -56,7 +67,7 @@ const SignUp = () => {
         I am a mentor
 
         <br />
-        
+
         <button type={"submit"}>Sign Up</button>
       </form>
     </div>
