@@ -11,6 +11,7 @@ const SignUp = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     const register = await auth.register(email, password);
+  
 
     if (register.error) {
       setMessage(register.error.message);
@@ -30,21 +31,32 @@ const SignUp = () => {
       <h1>This is register</h1>
 
       <form onSubmit={handleRegister}>
+        <p>Email</p>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
         <br />
+
+        <p>Password</p>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
         <br />
-        <input type="checkbox" />
+
+        <input 
+          type="checkbox" 
+          onChange={ (e) => e.target.checked ? console.log("Mentor") : console.log("Mentee")} 
+        />
         I am a mentor
+
         <br />
+        
         <button type={"submit"}>Sign Up</button>
       </form>
     </div>
