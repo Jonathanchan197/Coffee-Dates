@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useAuth } from "../auth";
 import NavBar from "../components/NavBar";
 
+//MUI
+import Button from '@mui/material/Button';
+
 const Signin = () => {
   const auth = useAuth();
   const [email, setEmail] = useState("");
@@ -43,7 +46,7 @@ const Signin = () => {
         />
         <br/>
         <br/>
-        <button type={"submit"}>Login</button>
+        <Button variant="outlined" className="sausage" type={"submit"}>Login</Button>
       </form>
     </div>
   );
