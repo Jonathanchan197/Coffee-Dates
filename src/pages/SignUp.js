@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useAuth } from "../auth";
 import NavBar from "../components/NavBar";
+//MUI
+import Button from '@mui/material/Button';
 
 const SignUp = () => {
   const auth = useAuth();
@@ -68,7 +70,7 @@ const SignUp = () => {
 
         <br />
 
-        <button type={"submit"}>Sign Up</button>
+        <Button variant="outlined" color="secondary" type={"submit"}>Sign Up</Button>
       </form>
     </div>
   );

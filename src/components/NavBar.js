@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth";
 import "../App.css";
+//MUI
+import Button from '@mui/material/Button';
 
 const NavBar = () => {
   const auth = useAuth();
@@ -22,7 +24,7 @@ const NavBar = () => {
                 <Link to={"/settings"}>Settings</Link>
               </li>
               <li>
-                <button onClick={auth.logout}>Sign Out</button>
+                <Button variant="outlined" onClick={auth.logout}>Sign Out</Button>
               </li>
             </>
           ) : (
