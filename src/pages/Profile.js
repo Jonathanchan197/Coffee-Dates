@@ -10,7 +10,9 @@ const Profile = () => {
     <div>
       <h1>Profile coming soon</h1>
       <p>Email: {auth.user.email}</p>
-      <button color="secondary" variant="contained">Press me</button>
+      <button color="secondary" variant="contained">
+        Press me
+      </button>
     </div>
   );
 };
