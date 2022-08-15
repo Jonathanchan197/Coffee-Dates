@@ -14,6 +14,7 @@ const Settings = () => {
   const [avatarUrl, setAvatarUrl] = useState("");
   const [name, setName] = useState("");
   const [industry, setIndustry] = useState(industriesList[0]);
+  const [selectedSkill, setSelectedSkill] = useState(skillsList[0]);
   const [skills, setSkills] = useState([]);
   const [website, setWebsite] = useState("");
   const [message, setMessage] = useState("");
@@ -37,17 +38,25 @@ const Settings = () => {
         setIndustriesList(response.data.map((i) => i.name));
       }
     }
+
     async function fetchSkillsList() {
       const response = await supabase.from("skill").select("name");
 
       if (response) {
         setSkillsList(response.data.map((s) => s.name));
+        //setSelectedSkill(skillsList[0]);
       }
     }
+
     fetchIndustriesList();
     fetchSkillsList();
     fetchCurrentUserData();
   }, []);
+
+  const addSkill = () => {
+    console.log("SKILLS LIST:", skillsList);
+    console.log("SELECTED SKILL:", selectedSkill);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,21 +77,21 @@ const Settings = () => {
       }
     }
 
-    const { data, error } = await supabase.from("profiles").upsert({
-      id: auth.user.id,
-      name: name,
-      website: website,
-      industry: industry,
-      avatar_url: avatarUrl,
-    });
+    // const { data, error } = await supabase.from("users").upsert({
+    //   id: auth.user.id,
+    //   name: name,
+    //   website: website,
+    //   industry: industry,
+    //   avatar_url: avatarUrl,
+    // });
 
-    if (error) {
-      console.log(error);
-    }
+    // if (error) {
+    //   console.log(error);
+    // }
 
-    if (data) {
-      setMessage("Profile has been updated! :D");
-    }
+    // if (data) {
+    //   setMessage("Profile has been updated! :D");
+    // }
   };
 
   return (
@@ -127,9 +136,15 @@ const Settings = () => {
             value={industry}
             onChange={(e) => setIndustry(e.target.value)}
           >
-            {industriesList.map((option) => (
-              <option value={option}>{option}</option>
-            ))}
+            {industriesList.map((option) =>
+              currentUserData.industry === option ? (
+                <option value={option} selected>
+                  {option}
+                </option>
+              ) : (
+                <option value={option}>{option}</option>
+              )
+            )}
           </select>
         </div>
 
@@ -140,14 +155,17 @@ const Settings = () => {
               ? null
               : currentUserData.skills.map((s) => <li>{s}</li>)}
           </ul>
-          <select name="skills">
+          <select
+            name="skills"
+            value={selectedSkill}
+            onChange={(e) => setSelectedSkill(e.target.value)}
+          >
+            <option></option>
             {skillsList.map((option) => (
               <option value={option}>{option}</option>
             ))}
           </select>
-          <button onClick={() => console.log("Add skill button clicked")}>
-            Add skill
-          </button>
+          <button onClick={addSkill}>Add skill</button>
         </div>
 
         <div className="form-group">
