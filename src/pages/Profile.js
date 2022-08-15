@@ -11,6 +11,7 @@ const Profile = () => {
     <div>
       <NavBar />
       <h1>Profile coming soon</h1>
+      <p>Email: {auth.user.email}</p>
     </div>
   );
 };

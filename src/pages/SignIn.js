@@ -26,19 +26,23 @@ const Signin = () => {
       <NavBar />
 
       {message && message}
-      <h1>This is Signin</h1>
+      <h1>Welcome Back! Log in NOW.</h1>
 
       <form onSubmit={handleSignIn}>
+        <p>Email</p>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <p>Password</p>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <br/>
+        <br/>
         <button type={"submit"}>Login</button>
       </form>
     </div>
