@@ -9,7 +9,7 @@ const Settings = () => {
   const [currentUserData, setCurrentUserData] = useState({});
   const [industriesList, setIndustriesList] = useState([]);
   const [skillsList, setSkillsList] = useState([]);
-  //for user data
+  //for user data to post
   const [image, setImage] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState("");
   const [name, setName] = useState("");
@@ -136,16 +136,18 @@ const Settings = () => {
         <div className="form-group">
           <label htmlFor="skills">Skills:</label>
           <ul>
-            {currentUserData.skills.map((s) => (
-              <li>{s}</li>
-            ))}
+            {currentUserData.skills === undefined
+              ? null
+              : currentUserData.skills.map((s) => <li>{s}</li>)}
           </ul>
-          <select name="skills" onChange={(e) => setSkills(e.target.value)}>
+          <select name="skills">
             {skillsList.map((option) => (
               <option value={option}>{option}</option>
             ))}
           </select>
-          <button onClick={()=>console.log("Add skill button clicked")}>Add skill</button>
+          <button onClick={() => console.log("Add skill button clicked")}>
+            Add skill
+          </button>
         </div>
 
         <div className="form-group">
