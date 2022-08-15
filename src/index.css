@@ -1,8 +1,20 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+:root {
+  --darker-color: #2C3639;
+  --dark-color: #3F4E4F;
+  --light-color: #A27B5C;
+  --lighter-color: #DCD7C9;
+}
+
 body {
+  background-color: #DCD7C9;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +22,144 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+input, select {
+  margin-bottom: 2em;
+}
+
+form {
+  margin-top: 2em;
+}
+/* 
+select {
+  color: var(--darker-color);
+  width: 310px;
+  padding: 15px;
+  height: 25px;
+} */
+
+.navLink {
+  transition: 0.3s;
+  border-bottom: transparent solid 1px;
+}
+
+.navLink:hover {
+  border-bottom: 1px solid white;
+}
+
+.title {
+  padding-bottom: 1em;
+}
+
+.formgroup {
+  margin-top: 2em;
+}
+
+.textField {
+  width: 470px;
+  height: 50px;
+  padding: 0px 15px 0px 15px;
+  
+  background: transparent;
+  outline: none;
+  color: var(--darker-color);
+  
+  border: solid 1px var(--darker-color);
+  
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+.textField:hover {
+
+  border: solid 1px var(--dark-color);
+  background-color: #a79c9570;;
+
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+#navigation {
+  background-color: var(--darker-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+  align-items: center;
+  box-shadow: 0 4px 2px -2px gray;
+  max-height: 58px;
+}
+
+/* box encasing logo + title */
+.logoDiv {
+  color: var(--lighter-color);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--lighter-color);
+}
+
+/* coffee logo */
+#logo {
+  width: 60px;
+  padding-right: 0.5em;
+}
+
+/* Links on nav bar */
+#navigation ul a{ 
+  color: var(--lighter-color);
+  padding-left: 2em;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* sign out button */
+#navigation ul button{ 
+  margin-left: 2em;
+}
+
+/* Body */
+.all {
+  /* border: solid 1px red; */
+  padding-top: 3em;
+  width: 75%;
+  margin: 0 auto;
+}
+
+/* Green buttons */
+.success {
+  padding: 10px;
+  background: transparent;
+  border: 1px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  border-radius: 2px;
+}
+
+.success:hover {
+  transition: 0.5s;
+  border: 1px solid rgb(110, 158, 110);
+  color: rgb(110, 158, 110);
+}
+
+/* logout */
+.logout {
+  padding-left: 5px;
+  padding-right: 5px;
+  background: transparent;
+  border: 1px solid rgb(191, 104, 82);
+  color: rgb(191, 104, 82);
+  border-radius: 2px;
+  max-height: 27px;
+}
+
+.logout:hover {
+  transition: 0.5s;
+  background-color: rgb(82, 46, 37);
+  border: 1px solid rgb(191, 71, 41);
+  color: rgb(191, 71, 41);
 }

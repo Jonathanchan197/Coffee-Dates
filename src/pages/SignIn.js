@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useAuth } from "../auth";
-import NavBar from "../components/NavBar";
 
 const Signin = () => {
   const auth = useAuth();
@@ -23,23 +22,29 @@ const Signin = () => {
 
   return (
     <div>
-      <NavBar />
-
       {message && message}
-      <h1>This is Signin</h1>
+      <h1>Welcome Back! Log in NOW.</h1>
 
       <form onSubmit={handleSignIn}>
+        <p>Email</p>
         <input
+          className="textField"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <p>Password</p>
         <input
+          className="textField"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type={"submit"}>Login</button>
+        <br />
+        <br />
+        <button className="success" type={"submit"}>
+          Login
+        </button>
       </form>
     </div>
   );
