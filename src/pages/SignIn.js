@@ -26,20 +26,23 @@ const Signin = () => {
       <h1>Welcome Back! Log in NOW.</h1>
 
       <form onSubmit={handleSignIn}>
+        <p>Email</p>
         <input
+          className="textField"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <p></p>
+        <p>Password</p>
         <input
+          className="textField"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
         <br />
-        <button variant="outlined" color="success" type={"submit"}>
+        <button className="success" type={"submit"}>
           Login
         </button>
       </form>

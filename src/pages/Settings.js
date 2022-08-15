@@ -127,7 +127,9 @@ const Settings = () => {
 
         <div className="form-group">
           <label htmlFor="name">Display name:</label>
+          <br/>
           <input
+            className="textField"
             type="text"
             onChange={(e) => setName(e.target.value)}
             value={currentUserData.name}
@@ -136,6 +138,7 @@ const Settings = () => {
 
         <div className="form-group">
           <label htmlFor="industry">Industry:</label>
+          <br/>
           <select
             name="industry"
             value={industry}
@@ -175,7 +178,9 @@ const Settings = () => {
 
         <div className="form-group">
           <label htmlFor="website">Website:</label>
+          <br/>
           <input
+            className="textField"
             type="text"
             onChange={(e) => setWebsite(e.target.value)}
             value={currentUserData.website}
@@ -183,7 +188,7 @@ const Settings = () => {
         </div>
 
         <div className="form-group">
-          <button type={"submit"}>Save profile!</button>
+          <button className="success" type={"submit"}>Save profile!</button>
         </div>
       </form>
     </div>

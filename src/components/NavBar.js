@@ -40,7 +40,7 @@ const NavBar = () => {
               </Link>
             </li>
 
-            <button variant="outlined" color="error" onClick={auth.logout}>
+            <button className="logout" color="error" onClick={auth.logout}>
               Sign Out
             </button>
           </>

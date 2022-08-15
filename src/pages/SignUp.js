@@ -30,14 +30,17 @@ const SignUp = () => {
       <h1>Register today! Or else.</h1>
 
       <form onSubmit={handleRegister}>
+        <p>Email</p>
         <input
+          className="textField"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <p></p>
+        <p>Password</p>
         <input
+          className="textField"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -53,7 +56,7 @@ const SignUp = () => {
         />
         I am a mentor */}
         {/* <br /><br /> */}
-        <button variant="outlined" color="success" type={"submit"}>
+        <button className="success" type={"submit"}>
           Sign Up
         </button>
       </form>
