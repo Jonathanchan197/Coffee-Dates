@@ -6,6 +6,7 @@ import NavBar from "../components/NavBar";
 const Settings = () => {
   const auth = useAuth();
   //current data fetch
+  const [currentUserData, setCurrentUserData] = useState({});
   const [industriesList, setIndustriesList] = useState([]);
   const [skillsList, setSkillsList] = useState([]);
   //for user data
@@ -18,26 +19,18 @@ const Settings = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    async function fetchCurrentName() {
+    async function fetchCurrentUserData() {
       const response = await supabase
         .from("users")
-        .select("name")
+        .select()
         .match({ id: auth.user.id });
 
       if (response) {
-        setName(response.data[0].name);
+        setCurrentUserData(response.data[0]);
+        console.log("current user data:", currentUserData);
       }
     }
-    async function fetchCurrentSkills() {
-        const response = await supabase
-          .from("users")
-          .select("skills")
-          .match({ id: auth.user.id });
-  
-        if (response) {
-          setSkills(response.data[0].skills);
-        }
-      }
+
     async function fetchIndustriesList() {
       const response = await supabase.from("industry").select("name");
 
@@ -54,8 +47,7 @@ const Settings = () => {
     }
     fetchIndustriesList();
     fetchSkillsList();
-    fetchCurrentName();
-    fetchCurrentSkills();
+    fetchCurrentUserData();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -125,7 +117,7 @@ const Settings = () => {
           <input
             type="text"
             onChange={(e) => setName(e.target.value)}
-            value={name}
+            value={currentUserData.name}
           />
         </div>
 
@@ -145,12 +137,11 @@ const Settings = () => {
         <div className="form-group">
           <label htmlFor="skills">Skills:</label>
           <ul>
-            {skills.map(s => <li>{s}</li>)}
+            {currentUserData.skills.map((s) => (
+              <li>{s}</li>
+            ))}
           </ul>
-          <select
-            name="skills"
-            onChange={(e) => setSkills(e.target.value)}
-          >
+          <select name="skills" onChange={(e) => setSkills(e.target.value)}>
             {skillsList.map((option) => (
               <option value={option}>{option}</option>
             ))}
@@ -163,7 +154,7 @@ const Settings = () => {
           <input
             type="text"
             onChange={(e) => setWebsite(e.target.value)}
-            value={website}
+            value={currentUserData.website}
           />
         </div>
 
