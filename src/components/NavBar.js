@@ -19,6 +19,9 @@ const NavBar = () => {
                 <Link to={"/profile"}>Profile</Link>
               </li>
               <li>
+                <Link to={"/settings"}>Settings</Link>
+              </li>
+              <li>
                 <button onClick={auth.logout}>Sign Out</button>
               </li>
             </>
