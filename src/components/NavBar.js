@@ -8,7 +8,19 @@ const NavBar = () => {
   const auth = useAuth();
 
   return (
-    <header className={"header"}>
+    <header className={"header"} id="navigation">
+      <div className="logoDiv">
+        <div>
+          <img
+            id="logo"
+            src="https://i.imgur.com/lHtar7r.png"
+            alt="Coffee Logo"
+          />
+        </div>
+        <div>
+          <h1 className="logoTitle">Coffee Date</h1>
+        </div>
+      </div>
       <ul>
         <li>
           <Link className="links" to={"/"}>

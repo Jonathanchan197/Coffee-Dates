@@ -1,3 +1,16 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+:root {
+  --darker-color: #2C3639;
+  --dark-color: #3F4E4F;
+  --light-color: #A27B5C;
+  --lighter-color: #DCD7C9;
+}
+
 body {
   background-color: #DCD7C9;
   margin: 0;
@@ -13,9 +26,44 @@ code {
     monospace;
 }
 
-.links {
+#navigation {
+  background-color: var(--darker-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+  align-items: center;
+  box-shadow: 0 4px 2px -2px gray;
 }
 
+/* box encasing logo + title */
+.logoDiv {
+  color: var(--lighter-color);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--lighter-color);
+}
+
+/* coffee logo */
+#logo {
+  width: 60px;
+  padding-right: 0.5em;
+}
+
+/* Links on nav bar */
+#navigation ul a{ 
+  color: var(--lighter-color);
+  padding-left: 2em;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* sign out button */
+#navigation ul button{ 
+  margin-left: 2em;
+}
+
+/* Body */
 .all {
   /* border: solid 1px red; */
   width: 75%;
