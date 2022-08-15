@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../supabase";
 import { useAuth } from "../auth";
-//MUI
-import { TextField, Button } from "@mui/material";
 
 const SignUp = () => {
   const auth = useAuth();
@@ -32,18 +30,14 @@ const SignUp = () => {
       <h1>Register today! Or else.</h1>
 
       <form onSubmit={handleRegister}>
-        <TextField
-          label="Email"
-          variant="filled"
+        <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <p></p>
-        <TextField
-          label="Password"
-          variant="filled"
+        <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -59,9 +53,9 @@ const SignUp = () => {
         />
         I am a mentor */}
         {/* <br /><br /> */}
-        <Button variant="outlined" color="success" type={"submit"}>
+        <button variant="outlined" color="success" type={"submit"}>
           Sign Up
-        </Button>
+        </button>
       </form>
     </div>
   );

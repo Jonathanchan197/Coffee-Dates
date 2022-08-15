@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { useAuth } from "../auth";
-import { TextField } from "@mui/material";
-//MUI
-import Button from "@mui/material/Button";
 
 const Signin = () => {
   const auth = useAuth();
@@ -29,26 +26,22 @@ const Signin = () => {
       <h1>Welcome Back! Log in NOW.</h1>
 
       <form onSubmit={handleSignIn}>
-        <TextField
-          label="Email"
-          variant="filled"
+        <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <p></p>
-        <TextField
-          label="Password"
-          variant="filled"
+        <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
         <br />
-        <Button variant="outlined" color="success" type={"submit"}>
+        <button variant="outlined" color="success" type={"submit"}>
           Login
-        </Button>
+        </button>
       </form>
     </div>
   );

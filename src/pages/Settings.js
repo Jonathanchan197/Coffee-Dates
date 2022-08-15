@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import { useAuth } from "../auth";
 
+
 const Settings = () => {
   const auth = useAuth();
   //current data fetch
@@ -78,6 +79,8 @@ const Settings = () => {
         avatarUrl = data.Key;
       }
     }
+
+    
 
     // const { data, error } = await supabase.from("users").upsert({
     //   id: auth.user.id,
