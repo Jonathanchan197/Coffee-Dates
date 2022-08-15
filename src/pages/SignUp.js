@@ -1,21 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { supabase } from "../supabase";
 import { useAuth } from "../auth";
 import NavBar from "../components/NavBar";
 
 const SignUp = () => {
   const auth = useAuth();
+  //for auth.user data
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // error/success message handling
   const [message, setMessage] = useState("");
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
     const register = await auth.register(email, password);
-    console.log(name);
-    console.log(surname);
-  
 
     if (register.error) {
       setMessage(register.error.message);
@@ -35,39 +33,31 @@ const SignUp = () => {
       <h1>Register today! Or else.</h1>
 
       <form onSubmit={handleRegister}>
-
-        <p>Name</p>
-        <input onChange={(e) => setName(e.target.value)}/>
-
-        <p>Surname</p>
-        <input onChange={(e) => setSurname(e.target.value)}/>
-
         <p>Email</p>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
-
         <br />
-
         <p>Password</p>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
-
         <br />
-
-        <input 
-          type="checkbox" 
-          onChange={ (e) => e.target.checked ? console.log("Mentor") : console.log("Mentee")} 
+        <br />
+        {/* <input
+          type="checkbox"
+          onChange={(e) =>
+            e.target.checked ? console.log("Mentor") : console.log("Mentee")
+          }
         />
-        I am a mentor
-
-        <br />
-
+        I am a mentor */}
+        {/* <br /><br /> */}
         <button type={"submit"}>Sign Up</button>
       </form>
     </div>
