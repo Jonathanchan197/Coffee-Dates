@@ -22,36 +22,35 @@ const NavBar = () => {
         </div>
       </div>
       <ul>
-        <li>
+        <li className="navLink">
           <Link className="links" to={"/"}>
             Home
           </Link>
         </li>
         {auth.user ? (
           <>
-            <li>
+            <li className="navLink">
               <Link className="links" to={"/profile"}>
                 Profile
               </Link>
             </li>
-            <li>
+            <li className="navLink">
               <Link className="links" to={"/settings"}>
                 Settings
               </Link>
             </li>
-
             <button className="logout" color="error" onClick={auth.logout}>
               Sign Out
             </button>
           </>
         ) : (
           <>
-            <li>
+            <li className="navLink">
               <Link className="links" to={"/sign-in"}>
                 Sign In
               </Link>
             </li>
-            <li>
+            <li className="navLink">
               <Link className="links" to={"/sign-up"}>
                 Sign Up
               </Link>
