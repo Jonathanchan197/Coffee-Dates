@@ -17,3 +17,9 @@ code {
   color: white;
   text-decoration: none;
 }
+
+.all {
+  /* border: solid 1px red; */
+  width: 75%;
+  margin: 0 auto;
+}

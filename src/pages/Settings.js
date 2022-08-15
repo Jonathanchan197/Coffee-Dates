@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import { useAuth } from "../auth";
-import NavBar from "../components/NavBar";
 
 const Settings = () => {
   const auth = useAuth();
@@ -100,7 +99,6 @@ const Settings = () => {
 
   return (
     <div>
-      <NavBar />
       <h1>Settings</h1>
       {message && message}
       {/* <button onClick={consoleTest}>Console test</button> */}

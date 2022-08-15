@@ -9,6 +9,7 @@ import SignIn from "./pages/SignIn";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import NavBar from "./components/NavBar";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 const theme = createTheme({
@@ -19,7 +20,7 @@ const theme = createTheme({
     secondary: {
       main: "#A27B5C",
     },
-  }
+  },
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -28,27 +29,30 @@ root.render(
     <ThemeProvider theme={theme}>
       <AuthProvider>
         <BrowserRouter>
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path={"sign-up"} element={<SignUp />} />
-            <Route path={"sign-in"} element={<SignIn />} />
-            <Route
-              path={"profile"}
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path={"settings"}
-              element={
-                <ProtectedRoute>
-                  <Settings />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
+          <NavBar />
+          <div className="all">
+            <Routes>
+              <Route index element={<Home />} />
+              <Route path={"sign-up"} element={<SignUp />} />
+              <Route path={"sign-in"} element={<SignIn />} />
+              <Route
+                path={"profile"}
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={"settings"}
+                element={
+                  <ProtectedRoute>
+                    <Settings />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </div>
         </BrowserRouter>
       </AuthProvider>
     </ThemeProvider>
