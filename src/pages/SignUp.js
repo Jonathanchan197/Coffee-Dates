@@ -60,7 +60,7 @@ const SignUp = () => {
         />
         I am a mentor */}
         {/* <br /><br /> */}
-        <Button variant="outlined" color="secondary" type={"submit"}>Sign Up</Button>
+        <Button variant="outlined" color="success" type={"submit"}>Sign Up</Button>
       </form>
     </div>
   );

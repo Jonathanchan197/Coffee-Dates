@@ -46,7 +46,7 @@ const Signin = () => {
         />
         <br/>
         <br/>
-        <Button variant="outlined" className="sausage" type={"submit"}>Login</Button>
+        <Button variant="outlined" color="success" type={"submit"}>Login</Button>
       </form>
     </div>
   );
