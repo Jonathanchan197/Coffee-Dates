@@ -27,7 +27,6 @@ const Settings = () => {
 
       if (response) {
         setCurrentUserData(response.data[0]);
-        console.log("current user data:", currentUserData);
       }
     }
 
@@ -146,7 +145,7 @@ const Settings = () => {
               <option value={option}>{option}</option>
             ))}
           </select>
-          <button>Add skill</button>
+          <button onClick={()=>console.log("Add skill button clicked")}>Add skill</button>
         </div>
 
         <div className="form-group">
