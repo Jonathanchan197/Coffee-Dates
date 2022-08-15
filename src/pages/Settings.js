@@ -44,7 +44,6 @@ const Settings = () => {
 
       if (response) {
         setSkillsList(response.data.map((s) => s.name));
-        //setSelectedSkill(skillsList[0]);
       }
     }
 
@@ -53,9 +52,13 @@ const Settings = () => {
     fetchCurrentUserData();
   }, []);
 
+  //TODO: FIX THIS DEAR GOD PLEASE
   const addSkill = () => {
     console.log("SKILLS LIST:", skillsList);
     console.log("SELECTED SKILL:", selectedSkill);
+    console.log("CURRENT USER SKILLS:", skills);
+    setSkills([...currentUserData.skills, selectedSkill]);
+    console.log("CURRENT USER SKILLS 2:", skills);
   };
 
   const handleSubmit = async (e) => {
@@ -79,10 +82,11 @@ const Settings = () => {
 
     // const { data, error } = await supabase.from("users").upsert({
     //   id: auth.user.id,
-    //   name: name,
-    //   website: website,
-    //   industry: industry,
     //   avatar_url: avatarUrl,
+    //   name: name,
+    //   industry: industry,
+    //   skills: skills,
+    //   website: website,
     // });
 
     // if (error) {
