@@ -1,23 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from 'react';
+import { supabase } from '../supabase';
 
-const Third = () => {
-  const [image, setImage] = useState(null);
-  const [bio, setBio] = useState("");
-  const [website, setWebsite] = useState("");
-  const [name, setName] = useState("");
+const Third = ({formData, setFormData}) => {
+
+  const [image, setImage] = useState('')
+
+  // useEffect( () => {
+    
+  //   const { data, error } = await supabase.storage
+  //     .from("avatars")
+  //     .upload(`${Date.now()}_${image.name}`, image);
+  //     if (error) {
+  //     console.log(error);
+  //   }
+
+  //   if (data) {
+  //     setImage(data.Key);
+  //   }
+  // },[image]);
 
   return (
     <div>
       <h2>Tell me about yourself.</h2>
 
-      <div className="form-group">
+      {/* <div className="form-group">
         <label htmlFor="avatar">Choose Avatar:</label>
+        <img
+          className="pfp"
+          src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${image}`}
+          width={200}
+          alt=""
+        />
         <input
           type="file"
           accept={"image/jpeg image/png"}
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(e) => {
+            setFormData(e.target.files[0])
+            setImage(e.target.files[0])
+            }
+          }
         />
-      </div>
+      </div> */}
 
       <div className="form-group">
           <label htmlFor="name">Display name:</label>
@@ -25,8 +48,8 @@ const Third = () => {
           <input
             className="textField"
             type="text"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
+            onChange={(e) => setFormData({...formData, name: e.target.value})}
+            value={formData.name}
           />
         </div>
 
@@ -35,8 +58,8 @@ const Third = () => {
           <br />
           <textarea
             className="textbox"
-            onChange={(e) => setBio(e.target.value)}
-            value={bio}
+            onChange={(e) => setFormData({...formData, bio: e.target.value})}
+            value={formData.bio}
           />
         </div>
 
@@ -46,8 +69,8 @@ const Third = () => {
           <input
             className="textField"
             type="text"
-            onChange={(e) => setWebsite(e.target.value)}
-            value={website}
+            onChange={(e) => setFormData({...formData, website: e.target.value})}
+            value={formData.website}
           />
         </div>
 

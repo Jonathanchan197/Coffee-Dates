@@ -2,20 +2,35 @@ import { useState } from "react";
 import First from "../forms/First";
 import Second from "../forms/Second";
 import Third from "../forms/Third";
+import Fourth from "../forms/Fourth"
+import Review from "../forms/Review";
 
 const Setup = () => {
   const [page, setPage] = useState(0);
+  const [formData, setFormData] = useState({
+    isMentor: null,
+    industry: '',
+    image: '',
+    bio: '',
+    name: '',
+    website: '',
+    skills: [],
+  });
 
   const whichPage = () => {
     switch (page) {
       case 0:
-        return <First/>;
+        return <First formData={formData} setFormData={setFormData}/>;
       case 1:
-        return <Second/>;
+        return <Second formData={formData} setFormData={setFormData}/>;
       case 2:
-        return <Third/>;
+        return <Third formData={formData} setFormData={setFormData}/>;
+      case 3:
+        return <Fourth formData={formData} setFormData={setFormData}/>;
+      case 4:
+        return <Review formData={formData} />;
       default:
-        return <First/>;
+        return <First formData={formData} setFormData={setFormData}/>;
     }
   };
 

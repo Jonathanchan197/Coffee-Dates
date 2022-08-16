@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 
-const Second = () => {
+const Second = ({formData, setFormData}) => {
   const [industriesList, setIndustriesList] = useState([]);
-  const [industry, setIndustry] = useState(industriesList[0]);
 
   useEffect(() => {
     async function fetchIndustriesList() {
@@ -24,8 +23,8 @@ const Second = () => {
         <br />
         <select
           name="industry"
-          value={industry}
-          onChange={(e) => setIndustry(e.target.value)}
+          value={formData.industry}
+          onChange={(e) => setFormData({industry:e.target.value})}
         >
           <option key="default"></option>
           {industriesList.map((option) => (
