@@ -27,7 +27,7 @@ function useProvideAuth() {
 
   const register = async (email, password) => {
     const { error, user } = await supabase.auth.signUp({ email, password },{
-      redirectTo: "http://localhost:3000/settings"
+      redirectTo: "http://localhost:3000/setup"
     });
 
     if (error) {
