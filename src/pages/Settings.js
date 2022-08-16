@@ -174,6 +174,7 @@ const Settings = () => {
             value={selectedSkill}
             onChange={(e) => setSelectedSkill(e.target.value)}
           >
+            <option key="default">Choose a skill</option>
             {skillsList.map((option) =>
               skills.includes(option) ? null : (
                 <option value={option} key={option}>{option}</option>
