@@ -39,7 +39,7 @@ const Settings = () => {
   }
 
   async function fetchIndustriesList() {
-    const response = await supabase.from("industry").select("name");
+    const response = await supabase.from("industries").select("name");
 
     if (response) {
       setIndustriesList(response.data.map((i) => i.name));
@@ -47,7 +47,7 @@ const Settings = () => {
   }
 
   async function fetchSkillsList() {
-    const response = await supabase.from("skill").select("name");
+    const response = await supabase.from("skills").select("name");
 
     if (response) {
       setSkillsList(response.data.map((s) => s.name));
