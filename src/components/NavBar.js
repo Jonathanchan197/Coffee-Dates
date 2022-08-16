@@ -11,14 +11,18 @@ const NavBar = () => {
     <header className={"header"} id="navigation">
       <div className="logoDiv">
         <div>
-          <img
-            id="logo"
-            src="https://i.imgur.com/lHtar7r.png"
-            alt="Coffee Logo"
-          />
+          <Link className="links" to={"/"}>
+            <img
+              id="logo"
+              src="https://i.imgur.com/lHtar7r.png"
+              alt="Coffee Logo"
+            />
+          </Link>
         </div>
         <div>
-          <h1 className="logoTitle">Coffee Date</h1>
+          <Link className="links" to={"/"}>
+            <h1 className="logoTitle">Coffee Date</h1>
+          </Link>
         </div>
       </div>
       <ul>
