@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth";
 
 const Signin = () => {
+  const navigate = useNavigate();
   const auth = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,6 +20,8 @@ const Signin = () => {
     }
 
     setPassword("");
+
+    navigate("/dashboard");
   };
 
   return (
