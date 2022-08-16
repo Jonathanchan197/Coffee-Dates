@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { AuthProvider } from "./auth";
-import { PublicUserProvider } from "./context/PublicUserContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Home from "./pages/Home";
@@ -16,34 +15,32 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <PublicUserProvider>
-        <BrowserRouter>
-          <NavBar />
-          <div className="all">
-            <Routes>
-              <Route index element={<Home />} />
-              <Route path={"sign-up"} element={<SignUp />} />
-              <Route path={"sign-in"} element={<SignIn />} />
-              <Route
-                path={"profile"}
-                element={
-                  <ProtectedRoute>
-                    <Profile />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path={"settings"}
-                element={
-                  <ProtectedRoute>
-                    <Settings />
-                  </ProtectedRoute>
-                }
-              />
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </PublicUserProvider>
+      <BrowserRouter>
+        <NavBar />
+        <div className="all">
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path={"sign-up"} element={<SignUp />} />
+            <Route path={"sign-in"} element={<SignIn />} />
+            <Route
+              path={"profile"}
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={"settings"}
+              element={
+                <ProtectedRoute>
+                  <Settings />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </AuthProvider>
   </React.StrictMode>
 );

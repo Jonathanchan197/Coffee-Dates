@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import { supabase } from "../supabase";
 import { useAuth } from "../auth";
-// import { usePublicUser } from "../context/PublicUserContext";
 
 const Settings = () => {
   const auth = useAuth();
-  //   const publicUser = usePublicUser();
   //current data fetch
   const [currentUserData, setCurrentUserData] = useState({});
   const [industriesList, setIndustriesList] = useState([]);
@@ -61,9 +59,7 @@ const Settings = () => {
     fetchCurrentUserData();
   }, []);
 
-  //TODO: FIX THIS DEAR GOD PLEASE
   const addSkill = () => {
-    // console.log("SKILLS LIST:", skillsList);
     console.log("CURRENT USER SKILLS:", skills);
     console.log("SELECTED SKILL:", selectedSkill);
     if (selectedSkill !== undefined) {
