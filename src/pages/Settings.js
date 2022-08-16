@@ -117,7 +117,6 @@ const Settings = () => {
     <div>
       <h1>Settings</h1>
       <br/>
-      {message && message}
       {avatarUrl ? (
         <img
           className="pfp"
@@ -153,7 +152,7 @@ const Settings = () => {
           <label htmlFor="industry">Biography:</label>
           <br />
           <textarea
-            className=""
+            className="textbox"
             onChange={(e) => setBio(e.target.value)}
             value={bio}
           />
@@ -214,7 +213,8 @@ const Settings = () => {
         <div className="form-group">
           <button className="success" type={"submit"}>
             Save profile!
-          </button>
+          </button> 
+          {` ${message && message}`}
         </div>
       </form>
     </div>

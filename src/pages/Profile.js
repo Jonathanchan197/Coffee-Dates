@@ -10,6 +10,7 @@ const Profile = () => {
   const [industry, setIndustry] = useState([]);
   const [skills, setSkills] = useState([]);
   const [website, setWebsite] = useState("");
+  const [bio, setBio] = useState("");
 
   useEffect ( () => {
 
@@ -19,12 +20,12 @@ const Profile = () => {
       .select()
       .match({ id: auth.user.id });
 
-      console.log(response);
       setImage(response.data[0].avatar_url);
       setName(response.data[0].name);
       setIndustry(response.data[0].industry);
       setSkills(response.data[0].skills);
       setWebsite(response.data[0].website);
+      setBio(response.data[0].bio);
     }
     fetchInfo();
 },[]);
@@ -36,6 +37,8 @@ const Profile = () => {
       <p>Industry: {industry}</p>
       <p>Skills: {skills.map((skill) => skills.length === 0 ? <></> : <li>{skill}</li>)}</p>
       <p>Website: {website}</p>
+      <p>Biography</p>
+      <p>{bio}</p>
       <button className="success"> Edit Profile </button>
     </div>
   );

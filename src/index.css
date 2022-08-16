@@ -1,4 +1,5 @@
 * {
+  font-family: 'Josefin Sans', sans-serif;
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
@@ -19,11 +20,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 
 input, select {
   margin-bottom: 2em;
@@ -31,6 +27,10 @@ input, select {
 
 form {
   margin-top: 2em;
+}
+
+p {
+  padding-bottom: 1em;
 }
 /* 
 select {
@@ -81,6 +81,11 @@ select {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
+}
+
+.textbox {
+  height: 175px;
+  padding-top: 1em;
 }
 
 #navigation {
