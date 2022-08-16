@@ -64,14 +64,14 @@ const Settings = () => {
     console.log("CURRENT USER SKILLS:", skills);
     console.log("SELECTED SKILL:", selectedSkill);
     if (selectedSkill !== undefined) {
-        setSkills([...skills, selectedSkill]);
+      setSkills([...skills, selectedSkill]);
     }
   };
 
   const removeSkill = (skill) => {
     console.log(`${skill} to be removed.`);
     const list = skills;
-    setSkills(list.filter(s => s !== skill));
+    setSkills(list.filter((s) => s !== skill));
   };
 
   const handleSubmit = async (e) => {
@@ -115,8 +115,9 @@ const Settings = () => {
 
   return (
     <div>
+      <div className="mob">
       <h1>Settings</h1>
-      <br/>
+      <br />
       {avatarUrl ? (
         <img
           className="pfp"
@@ -127,6 +128,7 @@ const Settings = () => {
       ) : (
         "No avatar set."
       )}
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="avatar">Choose Avatar:</label>
@@ -182,7 +184,13 @@ const Settings = () => {
         <div className="form-group">
           <label htmlFor="skills">Skills:</label>
           <ul>
-            {skills.length === 0 ? "No skills to show." : skills.map((s) => <li>{s} <button onClick={() => removeSkill(s)}>Remove</button></li>)}
+            {skills.length === 0
+              ? "No skills to show."
+              : skills.map((s) => (
+                  <li>
+                    {s} <button onClick={() => removeSkill(s)}>Remove</button>
+                  </li>
+                ))}
           </ul>
           <select
             name="skills"
@@ -192,7 +200,9 @@ const Settings = () => {
             <option key="default"></option>
             {skillsList.map((option) =>
               skills.includes(option) ? null : (
-                <option value={option} key={option}>{option}</option>
+                <option value={option} key={option}>
+                  {option}
+                </option>
               )
             )}
           </select>
@@ -213,7 +223,7 @@ const Settings = () => {
         <div className="form-group">
           <button className="success" type={"submit"}>
             Save profile!
-          </button> 
+          </button>
           {` ${message && message}`}
         </div>
       </form>
