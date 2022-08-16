@@ -46,7 +46,6 @@ const removeSkill = (e, skill) => {
         </ul>
         <select
           name="skills"
-          value={selectedSkill}
           onChange={(e) => {
             setSelectedSkill(e.target.value)
           }}

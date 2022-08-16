@@ -1,52 +1,67 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import { useAuth } from "../auth";
 
 const Review = ({formData}) => {
-  const auth = useAuth;
-  const [message, setMessage] = useState('');
+  const auth = useAuth();
 
-const handleMentor = async () => {
-    const { data, error } = await supabase.from("mentor").upsert({
-        name: formData.name,
-        bio: formData.bio,
-        industry: formData.industry,
-        skills: formData.skills,
-        website: formData.website,
-        mentor: formData.isMentor,
-      });
-  
-      if (error) {
-        console.log(error);
-      }
-  
-      if (data) {
-        setMessage("Profile has been updated! :D");
-      }
-    };
+  async function fetchCurrentUserData() {
+    await supabase
+      .from() // THIS WILL EVENTUALLY PULL FROM "mentors" or "mentees"
+      .select()
+      .match({ id: auth.user.id });
+  }
+  useEffect(() => {
+    fetchCurrentUserData();
+  }, []);
 
-    const handleMentee = async () => {
-      const { data, error } = await supabase.from("mentees").upsert({
-          name: formData.name,
-          bio: formData.bio,
-          industry: formData.industry,
-          skills: formData.skills,
-          website: formData.website,
-          mentor: formData.isMentor,
-        });
-    
-        if (error) {
-          console.log(error);
-        }
-    
-        if (data) {
-          setMessage("Profile has been updated! :D");
-        }
-      };
+  const handleMentor = async (e) => {
+    e.preventDefault();
+
+
+    const { data, error } = await supabase.from("mentors").upsert({
+      id: auth.user.id,
+      name: formData.name,
+      bio: formData.bio,
+      industry: formData.industry,
+      skills: formData.skills,
+      website: formData.website,
+      mentor: formData.isMentor,
+    });
+
+    if (error) {
+      console.log(error);
+    }
+
+    if (data) {
+      console.log("Profile has been updated! :D");
+    }
+  };
+
+  const handleMentee = async (e) => {
+    e.preventDefault();
+
+    const { data, error } = await supabase.from("mentees").upsert({
+      id: auth.user.id,
+      name: formData.name,
+      bio: formData.bio,
+      industry: formData.industry,
+      skills: formData.skills,
+      website: formData.website,
+      mentor: formData.isMentor,
+    });
+
+    if (error) {
+      console.log(error);
+    }
+
+    if (data) {
+      console.log("Profile has been updated! :D");
+    }
+};
 
     return (
         <div>
-          {message && message}
             <h2>Please review your Information before posting.</h2>
             <h3>Mentor Status: {formData.isMentor === true ? "True" : "False"}</h3>
             <h3>Industry: {formData.industry}</h3>
