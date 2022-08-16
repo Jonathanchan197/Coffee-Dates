@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { AuthProvider } from "./auth";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Redirect } from "react-router-dom";
 import "./index.css";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import NavBar from "./components/NavBar";
@@ -22,6 +23,14 @@ root.render(
             <Route index element={<Home />} />
             <Route path={"sign-up"} element={<SignUp />} />
             <Route path={"sign-in"} element={<SignIn />} />
+            <Route
+              path={"dashboard"}
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path={"profile"}
               element={

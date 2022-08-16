@@ -62,8 +62,6 @@ const Settings = () => {
 
   const addSkill = (e) => {
     e.preventDefault();
-    console.log("CURRENT USER SKILLS:", skills);
-    console.log("SELECTED SKILL:", selectedSkill);
     if (selectedSkill !== undefined) {
         setSkills([...skills, selectedSkill]);
     }
@@ -71,7 +69,6 @@ const Settings = () => {
 
   const removeSkill = (e, skill) => {
     e.preventDefault();
-    console.log(`${skill} to be removed.`);
     const list = skills;
     setSkills(list.filter(s => s !== skill));
   };
@@ -90,7 +87,6 @@ const Settings = () => {
       }
 
       if (data) {
-        console.log("DATA KEY:", data.Key);
         setAvatarUrl(data.Key);
         avatar = data.Key;
       }
