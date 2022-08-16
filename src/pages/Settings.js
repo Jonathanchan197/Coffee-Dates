@@ -21,7 +21,7 @@ const Settings = () => {
 
   async function fetchCurrentUserData() {
     const response = await supabase
-      .from("users")
+      .from("users") // THIS WILL EVENTUALLY PULL FROM "mentors" or "mentees"
       .select()
       .match({ id: auth.user.id });
 
