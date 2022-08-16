@@ -40,6 +40,13 @@ select {
   height: 25px;
 } */
 
+.pfp {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
 .title {
   padding-bottom: 1em;
 }
@@ -48,7 +55,7 @@ select {
   margin-top: 2em;
 }
 
-.textField {
+.textField, textarea {
   width: 470px;
   height: 50px;
   padding: 0px 15px 0px 15px;
@@ -65,7 +72,7 @@ select {
   -ms-transition: all 0.3s ease-in-out;
 }
 
-.textField:hover {
+.textField:hover, textarea:hover {
 
   border: solid 1px var(--dark-color);
   background-color: #a79c9570;;

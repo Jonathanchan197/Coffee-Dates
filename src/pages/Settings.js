@@ -116,9 +116,11 @@ const Settings = () => {
   return (
     <div>
       <h1>Settings</h1>
+      <br/>
       {message && message}
       {avatarUrl ? (
         <img
+          className="pfp"
           src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${avatarUrl}`}
           width={200}
           alt=""
@@ -150,9 +152,8 @@ const Settings = () => {
         <div className="form-group">
           <label htmlFor="industry">Biography:</label>
           <br />
-          <input
+          <textarea
             className=""
-            type="textarea"
             onChange={(e) => setBio(e.target.value)}
             value={bio}
           />

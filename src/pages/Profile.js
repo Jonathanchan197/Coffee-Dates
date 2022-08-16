@@ -5,10 +5,7 @@ const Profile = () => {
 
   const auth = useAuth();
 
-  // const [currentUserData, setCurrentUserData] = useState({});
-  // const [industriesList, setIndustriesList] = useState([]);
-  // const [skillsList, setSkillsList] = useState([]);
-  //for user data to post
+  const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [industry, setIndustry] = useState([]);
   const [skills, setSkills] = useState([]);
@@ -22,6 +19,8 @@ const Profile = () => {
       .select()
       .match({ id: auth.user.id });
 
+      console.log(response);
+      setImage(response.data[0].avatar_url);
       setName(response.data[0].name);
       setIndustry(response.data[0].industry);
       setSkills(response.data[0].skills);
@@ -29,16 +28,15 @@ const Profile = () => {
     }
     fetchInfo();
 },[]);
-
-  skills.map((skill) => console.log(skill));
-
   return (
     <div>
       <h1>Profile</h1>
+      <img className="pfp" src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${image}`} alt="Time to get a profile picture, no one will swipe right on you. "/>
       <p>Name: {name}</p>
       <p>Industry: {industry}</p>
       <p>Skills: {skills.map((skill) => skills.length === 0 ? <></> : <li>{skill}</li>)}</p>
       <p>Website: {website}</p>
+      <button className="success"> Edit Profile </button>
     </div>
   );
 };
