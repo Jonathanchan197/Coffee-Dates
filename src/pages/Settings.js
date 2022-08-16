@@ -67,6 +67,12 @@ const Settings = () => {
     }
   };
 
+  const removeSkill = (skill) => {
+    console.log(`${skill} to be removed.`);
+    const list = skills;
+    setSkills(list.filter(s => s !== skill));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let avatarUrl = "";
@@ -108,8 +114,6 @@ const Settings = () => {
     <div>
       <h1>Settings</h1>
       {message && message}
-      {/* <button onClick={consoleTest}>Console test</button> */}
-      {/* <br /> */}
       {avatarUrl ? (
         <img
           src={`https://sphipqdbsrzdckcxbkgk.supabase.co/storage/v1/object/public/${avatarUrl}`}
@@ -148,6 +152,7 @@ const Settings = () => {
             value={industry}
             onChange={(e) => setIndustry(e.target.value)}
           >
+            <option key="default"></option>
             {industriesList.map((option) =>
               industry === option ? (
                 <option value={option} selected>
@@ -163,14 +168,14 @@ const Settings = () => {
         <div className="form-group">
           <label htmlFor="skills">Skills:</label>
           <ul>
-            {skills === undefined ? null : skills.map((s) => <li>{s}</li>)}
+            {skills.length === 0 ? "No skills to show." : skills.map((s) => <li>{s} <button onClick={() => removeSkill(s)}>Remove</button></li>)}
           </ul>
           <select
             name="skills"
             value={selectedSkill}
             onChange={(e) => setSelectedSkill(e.target.value)}
           >
-            <option key="default">Choose a skill</option>
+            <option key="default"></option>
             {skillsList.map((option) =>
               skills.includes(option) ? null : (
                 <option value={option} key={option}>{option}</option>
