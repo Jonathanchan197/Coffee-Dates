@@ -18,10 +18,13 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* padding-bottom: 20em;  */
+  padding-bottom: 2em;
 }
 
-
+a {
+  text-decoration: none;
+  color: var(--lighter-color)
+}
 input, select {
   margin-bottom: 2em;
 }
@@ -174,4 +177,69 @@ select {
   background-color: rgb(82, 46, 37);
   border: 1px solid rgb(191, 71, 41);
   color: rgb(191, 71, 41);
+}
+
+
+@media only screen and (width <= 350px) {
+
+  /* NAV-MOBILE */
+  #logo {
+    width: 40px;
+    padding-right: 0.5em;
+  }
+
+  .logoTitle {
+    font-size: 75%;
+  }
+
+  #navigation ul a{ 
+    font-size: 60%;
+  }
+
+  .logout {
+    font-size: 60%;
+  }
+
+  h1{
+    font-size: 80%;
+  }
+
+  p{
+    font-size: 70%
+  }
+
+.textField {
+    width: 250px;
+    height: 30px;
+    margin-bottom: 1em;
+    font-size: 70%;
+  }
+
+  .textbox {
+    width: 250px;
+    height: 100px;
+    font-size: 70%;
+    margin-bottom: 1em;
+  }
+
+  .mob {
+    text-align: center;
+  }
+
+  .mob h1{
+    padding-bottom: 1em;
+  }
+
+  .pfp{
+    width: 100px;
+    height: 100px;
+  }
+
+  .success {
+    font-size: 60%;
+  }
+
+  .all {
+    padding-top: 4em;
+  }
 }
