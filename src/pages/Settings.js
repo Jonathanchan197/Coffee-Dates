@@ -11,6 +11,7 @@ const Settings = () => {
   const [image, setImage] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState("");
   const [name, setName] = useState("");
+  const [bio, setBio] = useState("");
   const [industry, setIndustry] = useState(industriesList[0]);
   const [selectedSkill, setSelectedSkill] = useState(skillsList[0]);
   const [skills, setSkills] = useState([]);
@@ -26,6 +27,7 @@ const Settings = () => {
     if (response) {
       setAvatarUrl(response.data[0].avatar_url);
       setName(response.data[0].name);
+      setBio(response.data[0].bio);
       setIndustry(response.data[0].industry);
       setSkills(response.data[0].skills);
       setWebsite(response.data[0].website);
@@ -96,6 +98,7 @@ const Settings = () => {
       id: auth.user.id,
       avatar_url: avatar,
       name: name,
+      bio: bio,
       industry: industry,
       skills: skills,
       website: website,
@@ -141,6 +144,17 @@ const Settings = () => {
             type="text"
             onChange={(e) => setName(e.target.value)}
             value={name}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="industry">Biography:</label>
+          <br />
+          <input
+            className=""
+            type="textarea"
+            onChange={(e) => setBio(e.target.value)}
+            value={bio}
           />
         </div>
 
