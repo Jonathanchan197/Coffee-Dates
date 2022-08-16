@@ -18,6 +18,7 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* padding-bottom: 20em;  */
 }
 
 
@@ -89,6 +90,7 @@ select {
 }
 
 #navigation {
+  position: fixed;
   background-color: var(--darker-color);
   display: flex;
   justify-content: space-between;
@@ -96,6 +98,7 @@ select {
   align-items: center;
   box-shadow: 0 4px 2px -2px gray;
   max-height: 58px;
+  width: 100%;
 }
 
 /* box encasing logo + title */
@@ -135,7 +138,7 @@ select {
 /* Body */
 .all {
   /* border: solid 1px red; */
-  padding-top: 3em;
+  padding-top: 8%;
   width: 75%;
   margin: 0 auto;
 }
