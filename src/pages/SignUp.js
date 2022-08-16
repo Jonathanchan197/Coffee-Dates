@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { supabase } from "../supabase";
+import React, { useState } from "react";
 import { useAuth } from "../auth";
 
 const SignUp = () => {
@@ -17,7 +16,7 @@ const SignUp = () => {
     if (register.error) {
       setMessage(register.error.message);
     } else {
-      setMessage("Sucessfully Signed up!");
+      setMessage("Sucessfully signed up! Please check your email for a verification link.");
     }
 
     setEmail("");

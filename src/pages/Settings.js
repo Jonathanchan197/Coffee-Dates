@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "../supabase";
 import { useAuth } from "../auth";
 
@@ -60,7 +61,8 @@ const Settings = () => {
     fetchCurrentUserData();
   }, []);
 
-  const addSkill = () => {
+  const addSkill = (e) => {
+    e.preventDefault();
     console.log("CURRENT USER SKILLS:", skills);
     console.log("SELECTED SKILL:", selectedSkill);
     if (selectedSkill !== undefined) {
@@ -68,7 +70,8 @@ const Settings = () => {
     }
   };
 
-  const removeSkill = (skill) => {
+  const removeSkill = (e, skill) => {
+    e.preventDefault();
     console.log(`${skill} to be removed.`);
     const list = skills;
     setSkills(list.filter(s => s !== skill));
@@ -182,7 +185,7 @@ const Settings = () => {
         <div className="form-group">
           <label htmlFor="skills">Skills:</label>
           <ul>
-            {skills.length === 0 ? "No skills to show." : skills.map((s) => <li>{s} <button onClick={() => removeSkill(s)}>Remove</button></li>)}
+            {skills.length === 0 ? "No skills to show." : skills.map((s) => <li>{s} <button onClick={(e) => removeSkill(e, s)}>Remove</button></li>)}
           </ul>
           <select
             name="skills"
@@ -196,7 +199,7 @@ const Settings = () => {
               )
             )}
           </select>
-          <button onClick={addSkill}>Add skill</button>
+          <button onClick={(e) => addSkill(e)}>Add skill</button>
         </div>
 
         <div className="form-group">
