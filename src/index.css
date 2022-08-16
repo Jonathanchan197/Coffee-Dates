@@ -40,15 +40,6 @@ select {
   height: 25px;
 } */
 
-.navLink {
-  transition: 0.3s;
-  border-bottom: transparent solid 1px;
-}
-
-.navLink:hover {
-  border-bottom: 1px solid white;
-}
-
 .title {
   padding-bottom: 1em;
 }
@@ -113,9 +104,15 @@ select {
 /* Links on nav bar */
 #navigation ul a{ 
   color: var(--lighter-color);
-  padding-left: 2em;
+  margin-left: 2em;
   display: inline-block;
   text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: 0.5s;
+}
+
+#navigation ul a:hover{ 
+  border-bottom: 1px solid white;
 }
 
 /* sign out button */
