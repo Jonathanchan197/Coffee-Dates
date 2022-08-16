@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { supabase } from "../supabase";
 import { useAuth } from "../auth";
-
+// import { usePublicUser } from "../context/PublicUserContext";
 
 const Settings = () => {
   const auth = useAuth();
+  //   const publicUser = usePublicUser();
   //current data fetch
   const [currentUserData, setCurrentUserData] = useState({});
   const [industriesList, setIndustriesList] = useState([]);
@@ -19,34 +20,42 @@ const Settings = () => {
   const [website, setWebsite] = useState("");
   const [message, setMessage] = useState("");
 
+  async function fetchCurrentUserData() {
+    const response = await supabase
+      .from("users")
+      .select()
+      .match({ id: auth.user.id });
+
+    if (response) {
+      setCurrentUserData(response.data[0]);
+      setName(response.data[0].name);
+      setIndustry(response.data[0].industry);
+      setSkills(response.data[0].skills);
+      setWebsite(response.data[0].website);
+    }
+
+    if (response.error) {
+      setMessage(response.error);
+    }
+  }
+
+  async function fetchIndustriesList() {
+    const response = await supabase.from("industry").select("name");
+
+    if (response) {
+      setIndustriesList(response.data.map((i) => i.name));
+    }
+  }
+
+  async function fetchSkillsList() {
+    const response = await supabase.from("skill").select("name");
+
+    if (response) {
+      setSkillsList(response.data.map((s) => s.name));
+    }
+  }
+
   useEffect(() => {
-    async function fetchCurrentUserData() {
-      const response = await supabase
-        .from("users")
-        .select()
-        .match({ id: auth.user.id });
-
-      if (response) {
-        setCurrentUserData(response.data[0]);
-      }
-    }
-
-    async function fetchIndustriesList() {
-      const response = await supabase.from("industry").select("name");
-
-      if (response) {
-        setIndustriesList(response.data.map((i) => i.name));
-      }
-    }
-
-    async function fetchSkillsList() {
-      const response = await supabase.from("skill").select("name");
-
-      if (response) {
-        setSkillsList(response.data.map((s) => s.name));
-      }
-    }
-
     fetchIndustriesList();
     fetchSkillsList();
     fetchCurrentUserData();
@@ -57,7 +66,9 @@ const Settings = () => {
     console.log("SKILLS LIST:", skillsList);
     console.log("SELECTED SKILL:", selectedSkill);
     console.log("CURRENT USER SKILLS:", skills);
-    setSkills([...currentUserData.skills, selectedSkill]);
+    if (selectedSkill !== undefined) {
+        setSkills([...currentUserData.skills, selectedSkill]);
+    }
     console.log("CURRENT USER SKILLS 2:", skills);
   };
 
@@ -79,8 +90,6 @@ const Settings = () => {
         avatarUrl = data.Key;
       }
     }
-
-    
 
     // const { data, error } = await supabase.from("users").upsert({
     //   id: auth.user.id,
@@ -127,25 +136,25 @@ const Settings = () => {
 
         <div className="form-group">
           <label htmlFor="name">Display name:</label>
-          <br/>
+          <br />
           <input
             className="textField"
             type="text"
             onChange={(e) => setName(e.target.value)}
-            value={currentUserData.name}
+            value={name}
           />
         </div>
 
         <div className="form-group">
           <label htmlFor="industry">Industry:</label>
-          <br/>
+          <br />
           <select
             name="industry"
             value={industry}
             onChange={(e) => setIndustry(e.target.value)}
           >
             {industriesList.map((option) =>
-              currentUserData.industry === option ? (
+              industry === option ? (
                 <option value={option} selected>
                   {option}
                 </option>
@@ -159,36 +168,37 @@ const Settings = () => {
         <div className="form-group">
           <label htmlFor="skills">Skills:</label>
           <ul>
-            {currentUserData.skills === undefined
-              ? null
-              : currentUserData.skills.map((s) => <li>{s}</li>)}
+            {skills === undefined ? null : skills.map((s) => <li>{s}</li>)}
           </ul>
           <select
             name="skills"
             value={selectedSkill}
             onChange={(e) => setSelectedSkill(e.target.value)}
           >
-            <option></option>
-            {skillsList.map((option) => (
-              <option value={option}>{option}</option>
-            ))}
+            {skillsList.map((option) =>
+              skills.includes(option) ? null : (
+                <option value={option}>{option}</option>
+              )
+            )}
           </select>
           <button onClick={addSkill}>Add skill</button>
         </div>
 
         <div className="form-group">
           <label htmlFor="website">Website:</label>
-          <br/>
+          <br />
           <input
             className="textField"
             type="text"
             onChange={(e) => setWebsite(e.target.value)}
-            value={currentUserData.website}
+            value={website}
           />
         </div>
 
         <div className="form-group">
-          <button className="success" type={"submit"}>Save profile!</button>
+          <button className="success" type={"submit"}>
+            Save profile!
+          </button>
         </div>
       </form>
     </div>
