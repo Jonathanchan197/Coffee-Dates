@@ -63,13 +63,12 @@ const Settings = () => {
 
   //TODO: FIX THIS DEAR GOD PLEASE
   const addSkill = () => {
-    console.log("SKILLS LIST:", skillsList);
-    console.log("SELECTED SKILL:", selectedSkill);
+    // console.log("SKILLS LIST:", skillsList);
     console.log("CURRENT USER SKILLS:", skills);
+    console.log("SELECTED SKILL:", selectedSkill);
     if (selectedSkill !== undefined) {
-        setSkills([...currentUserData.skills, selectedSkill]);
+        setSkills([...skills, selectedSkill]);
     }
-    console.log("CURRENT USER SKILLS 2:", skills);
   };
 
   const handleSubmit = async (e) => {
@@ -177,7 +176,7 @@ const Settings = () => {
           >
             {skillsList.map((option) =>
               skills.includes(option) ? null : (
-                <option value={option}>{option}</option>
+                <option value={option} key={option}>{option}</option>
               )
             )}
           </select>
