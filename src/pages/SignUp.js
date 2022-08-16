@@ -11,7 +11,7 @@ const SignUp = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const register = await auth.register(email, password);
+    const register = await auth.register(email, password)
 
     if (register.error) {
       setMessage(register.error.message);
