@@ -5,7 +5,6 @@ import { useAuth } from "../auth";
 const Settings = () => {
   const auth = useAuth();
   //current data fetch
-  const [currentUserData, setCurrentUserData] = useState({});
   const [industriesList, setIndustriesList] = useState([]);
   const [skillsList, setSkillsList] = useState([]);
   //for user data to post
@@ -25,7 +24,7 @@ const Settings = () => {
       .match({ id: auth.user.id });
 
     if (response) {
-      setCurrentUserData(response.data[0]);
+      setAvatarUrl(response.data[0].avatar_url);
       setName(response.data[0].name);
       setIndustry(response.data[0].industry);
       setSkills(response.data[0].skills);
@@ -75,7 +74,7 @@ const Settings = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let avatarUrl = "";
+    let avatar = avatarUrl;
 
     if (image) {
       const { data, error } = await supabase.storage
@@ -87,27 +86,28 @@ const Settings = () => {
       }
 
       if (data) {
+        console.log("DATA KEY:", data.Key);
         setAvatarUrl(data.Key);
-        avatarUrl = data.Key;
+        avatar = data.Key;
       }
     }
 
-    // const { data, error } = await supabase.from("users").upsert({
-    //   id: auth.user.id,
-    //   avatar_url: avatarUrl,
-    //   name: name,
-    //   industry: industry,
-    //   skills: skills,
-    //   website: website,
-    // });
+    const { data, error } = await supabase.from("users").upsert({
+      id: auth.user.id,
+      avatar_url: avatar,
+      name: name,
+      industry: industry,
+      skills: skills,
+      website: website,
+    });
 
-    // if (error) {
-    //   console.log(error);
-    // }
+    if (error) {
+      console.log(error);
+    }
 
-    // if (data) {
-    //   setMessage("Profile has been updated! :D");
-    // }
+    if (data) {
+      setMessage("Profile has been updated! :D");
+    }
   };
 
   return (
@@ -116,7 +116,7 @@ const Settings = () => {
       {message && message}
       {avatarUrl ? (
         <img
-          src={`https://sphipqdbsrzdckcxbkgk.supabase.co/storage/v1/object/public/${avatarUrl}`}
+          src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${avatarUrl}`}
           width={200}
           alt=""
         />
