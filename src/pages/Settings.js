@@ -16,6 +16,7 @@ const Settings = () => {
   const [selectedSkill, setSelectedSkill] = useState(skillsList[0]);
   const [skills, setSkills] = useState([]);
   const [website, setWebsite] = useState("");
+  const [isMentor, setIsMentor] = useState(false);
   const [message, setMessage] = useState("");
 
   async function fetchCurrentUserData() {
@@ -31,6 +32,7 @@ const Settings = () => {
       setIndustry(response.data[0].industry);
       setSkills(response.data[0].skills);
       setWebsite(response.data[0].website);
+      setIsMentor(response.data[0].mentor);
     }
 
     if (response.error) {
@@ -63,14 +65,14 @@ const Settings = () => {
   const addSkill = (e) => {
     e.preventDefault();
     if (selectedSkill !== undefined) {
-        setSkills([...skills, selectedSkill]);
+      setSkills([...skills, selectedSkill]);
     }
   };
 
   const removeSkill = (e, skill) => {
     e.preventDefault();
     const list = skills;
-    setSkills(list.filter(s => s !== skill));
+    setSkills(list.filter((s) => s !== skill));
   };
 
   const handleSubmit = async (e) => {
@@ -100,6 +102,7 @@ const Settings = () => {
       industry: industry,
       skills: skills,
       website: website,
+      mentor: isMentor,
     });
 
     if (error) {
@@ -114,7 +117,7 @@ const Settings = () => {
   return (
     <div>
       <h1>Settings</h1>
-      <br/>
+      <br />
       {avatarUrl ? (
         <img
           className="pfp"
@@ -180,7 +183,14 @@ const Settings = () => {
         <div className="form-group">
           <label htmlFor="skills">Skills:</label>
           <ul>
-            {skills.length === 0 ? "No skills to show." : skills.map((s) => <li>{s} <button onClick={(e) => removeSkill(e, s)}>Remove</button></li>)}
+            {skills.length === 0
+              ? "No skills to show."
+              : skills.map((s) => (
+                  <li>
+                    {s}{" "}
+                    <button onClick={(e) => removeSkill(e, s)}>Remove</button>
+                  </li>
+                ))}
           </ul>
           <select
             name="skills"
@@ -190,7 +200,9 @@ const Settings = () => {
             <option key="default"></option>
             {skillsList.map((option) =>
               skills.includes(option) ? null : (
-                <option value={option} key={option}>{option}</option>
+                <option value={option} key={option}>
+                  {option}
+                </option>
               )
             )}
           </select>
@@ -209,9 +221,21 @@ const Settings = () => {
         </div>
 
         <div className="form-group">
+          <label htmlFor="isMentor">I am a mentor</label>
+          <input
+            type="checkbox"
+            value={isMentor}
+            checked={isMentor}
+            onChange={(e) =>
+              e.target.checked ? setIsMentor(true) : setIsMentor(false) 
+            }
+          />
+        </div>
+
+        <div className="form-group">
           <button className="success" type={"submit"}>
             Save profile!
-          </button> 
+          </button>
           {` ${message && message}`}
         </div>
       </form>
