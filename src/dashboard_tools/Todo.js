@@ -18,8 +18,6 @@ function Todo() {
     if (response) {
       setIsMentor(response.data[0].mentor);
     }
-
-    console.log(isMentor);
   }
 
   async function fetchInfo() {
@@ -89,19 +87,22 @@ function Todo() {
         Probs does something
       </button>
       <ul>
-        {items.map((item) => {
-          return (
-            <li key={item}>
-              {item}
-              <span> </span>
-              <button className="cross" onClick={() => deleteItem(item)}>
-                ❌
-              </button>{" "}
-              {/* add margin */}
-            </li>
-          );
-        })}
+        {items
+          ? items.map((item) => {
+              return (
+                <li key={item}>
+                  {item}
+                  <span> </span>
+                  <button className="cross" onClick={() => deleteItem(item)}>
+                    ❌
+                  </button>{" "}
+                  {/* add margin */}
+                </li>
+              );
+            })
+          : null}
       </ul>
+      <button onClick={updateInfo}>Save</button>
     </div>
   );
 }

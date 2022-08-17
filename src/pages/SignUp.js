@@ -47,14 +47,6 @@ const SignUp = () => {
         />
         <br />
         <br />
-        {/* <input
-          type="checkbox"
-          onChange={(e) =>
-            e.target.checked ? console.log("Mentor") : console.log("Mentee")
-          }
-        />
-        I am a mentor */}
-        {/* <br /><br /> */}
         <button className="success" type={"submit"}>
           Sign Up
         </button>

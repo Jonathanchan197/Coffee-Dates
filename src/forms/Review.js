@@ -35,6 +35,7 @@ const Review = ({ formData, setFormData }) => {
       website: formData.website,
       mentor: formData.isMentor,
       avatar_url: avatar,
+      tasks: []
     });
 
     if (error) {
@@ -77,6 +78,7 @@ const Review = ({ formData, setFormData }) => {
       website: formData.website,
       mentor: formData.isMentor,
       avatar_url: avatar,
+      tasks: []
     });
 
     if (error) {
