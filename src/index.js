@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import NavBar from "./components/NavBar";
+import Match from "./pages/Match";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -46,6 +47,14 @@ root.render(
               element={
                 <ProtectedRoute>
                   <Settings />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={"match"}
+              element={
+                <ProtectedRoute>
+                  <Match />
                 </ProtectedRoute>
               }
             />

@@ -33,6 +33,11 @@ const NavBar = () => {
         </li>
         {auth.user ? (
           <>
+          <li className="navLink">
+              <Link className="links" to={"/match"}>
+                Matches
+              </Link>
+            </li>
             <li className="navLink">
               <Link className="links" to={"/dashboard"}>
                 Dashboard
