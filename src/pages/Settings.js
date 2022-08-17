@@ -19,9 +19,22 @@ const Settings = () => {
   const [isMentor, setIsMentor] = useState(false);
   const [message, setMessage] = useState("");
 
-  async function fetchCurrentUserData() {
+  async function fetchMentorOrMentee() {
     const response = await supabase
-      .from("users") // THIS WILL EVENTUALLY PULL FROM "mentors" or "mentees"
+      .from("users")
+      .select()
+      .match({ id: auth.user.id });
+
+      if (response) {
+        setIsMentor(response.data[0].mentor);
+      }
+  }
+
+  async function fetchCurrentUserData() {
+    const tableName = isMentor ? "mentors" : "mentees";
+
+    const response = await supabase
+      .from(`${tableName}`)
       .select()
       .match({ id: auth.user.id });
 
@@ -32,7 +45,6 @@ const Settings = () => {
       setIndustry(response.data[0].industry);
       setSkills(response.data[0].skills);
       setWebsite(response.data[0].website);
-      setIsMentor(response.data[0].mentor);
     }
 
     if (response.error) {
@@ -59,8 +71,9 @@ const Settings = () => {
   useEffect(() => {
     fetchIndustriesList();
     fetchSkillsList();
+    fetchMentorOrMentee();
     fetchCurrentUserData();
-  }, []);
+  }, [isMentor]);
 
   const addSkill = (e) => {
     e.preventDefault();
@@ -94,7 +107,9 @@ const Settings = () => {
       }
     }
 
-    const { data, error } = await supabase.from("users").upsert({
+    const tableName = isMentor ? "mentors" : "mentees";
+
+    const { data, error } = await supabase.from(`${tableName}`).upsert({
       id: auth.user.id,
       avatar_url: avatar,
       name: name,
@@ -123,7 +138,7 @@ const Settings = () => {
           className="pfp"
           src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${avatarUrl}`}
           width={200}
-          alt=""
+          alt={avatarUrl}
         />
       ) : (
         "No avatar set."
@@ -227,7 +242,7 @@ const Settings = () => {
             value={isMentor}
             checked={isMentor}
             onChange={(e) =>
-              e.target.checked ? setIsMentor(true) : setIsMentor(false) 
+              e.target.checked ? setIsMentor(true) : setIsMentor(false)
             }
           />
         </div>

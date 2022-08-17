@@ -24,7 +24,7 @@ const Second = ({formData, setFormData}) => {
         <select
           name="industry"
           value={formData.industry}
-          onChange={(e) => setFormData({industry:e.target.value})}
+          onChange={(e) => setFormData({...formData, industry:e.target.value})}
         >
           <option key="default"></option>
           {industriesList.map((option) => (
