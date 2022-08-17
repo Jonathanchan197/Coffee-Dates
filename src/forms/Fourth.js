@@ -15,13 +15,13 @@ useEffect(() => {
     }
   }
   fetchSkillsList();
-},[]);
+},[skills]);
 
 const addSkill = (e) => {
   e.preventDefault();
   if (selectedSkill !== undefined) {
     setSkills([...skills, selectedSkill]);
-    setFormData({...formData, skills: skills});
+    setFormData({...formData, skills: [...skills, selectedSkill]});
   }
 };
 
