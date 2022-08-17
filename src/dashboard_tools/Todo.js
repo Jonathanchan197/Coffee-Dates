@@ -89,18 +89,20 @@ function Todo() {
         Probs does something
       </button>
       <ul>
-        {items.map((item) => {
-          return (
-            <li key={item}>
-              {item}
-              <span> </span>
-              <button className="cross" onClick={() => deleteItem(item)}>
-                ❌
-              </button>{" "}
-              {/* add margin */}
-            </li>
-          );
-        })}
+        {items
+          ? items.map((item) => {
+              return (
+                <li key={item}>
+                  {item}
+                  <span> </span>
+                  <button className="cross" onClick={() => deleteItem(item)}>
+                    ❌
+                  </button>{" "}
+                  {/* add margin */}
+                </li>
+              );
+            })
+          : null}
       </ul>
     </div>
   );
