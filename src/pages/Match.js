@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../supabase";
+import { useAuth } from "../auth";
 import TinderCard from "react-tinder-card";
 import "./TinderCard.css";
 
 const Match = () => {
   const [people, setPeople] = useState([]);
+  const [currentMentor, setCurrentMentor] = useState([])
+  const [mentees, setMentees] = useState([])
+  const auth = useAuth();
 
-  const onSwipe = (direction) => {
-    console.log(`You swiped ${direction}.`);
+  const onSwipe = (direction, mentor_id) => {
+    console.log(`You swiped ${direction} on` + mentor_id);
+    if (direction === 'right') {
+        handleSubmit(mentor_id);
+    }
   };
 
   const onCardLeftScreen = (id) => {
-    console.log(id + " left the screen");
+        console.log(id +  " left the screen");
   };
+
+  const handleSubmit = async (e) => {
+    const {data} = await supabase.from('mentors')
+        .upsert({id: e, mentees: auth.user.id})
+  };  
 
   useEffect(() => {
     const fetchMentor = async () => {
@@ -34,8 +46,8 @@ const Match = () => {
           <TinderCard
             className="swipe"
             key={person.id}
-            onSwipe={onSwipe}
-            onCardLeftScreen={() => onCardLeftScreen(person.id)}
+            onSwipe={(direction) => onSwipe(direction, person.id)} 
+            onCardLeftScreen={() => onCardLeftScreen(person.id,)}
             preventSwipe={["up", "down"]}
           >
             
