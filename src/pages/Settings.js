@@ -34,7 +34,7 @@ const Settings = () => {
     const tableName = isMentor ? "mentors" : "mentees";
 
     const response = await supabase
-      .from(`${tableName}`) // THIS WILL EVENTUALLY PULL FROM "mentors" or "mentees"
+      .from(`${tableName}`)
       .select()
       .match({ id: auth.user.id });
 
