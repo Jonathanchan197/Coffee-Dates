@@ -17,6 +17,10 @@ const Setup = () => {
     skills: [],
   });
 
+  console.log("CURRENT PAGE:", page);
+  console.log("FORM DATA:", formData);
+
+
   const whichPage = () => {
     switch (page) {
       case 0:
@@ -45,39 +49,40 @@ const Setup = () => {
     setPage(page + 1);
   };
 
-//   const whichButtons = () => {
-//     if (page >= 4) {
-//       return buttons = (
-//         <button className="logout" onClick={handleBack}>
-//           Back
-//         </button>
-//       );
-//     }
-//     if (page <= 1) {
-//       return buttons = (
-//         <button className="logout" onClick={handleNext}>
-//           Next
-//         </button>
-//       );
-//     } else {
-//       return buttons = (
-//         <>
-//           <button className="logout" onClick={handleBack}>
-//             Back
-//           </button>
-//           <button className="logout" onClick={handleNext}>
-//             Next
-//           </button>
-//         </>
-//       );
-//   }
-// };
+  const whichButtons = () => {
+    if (page === 4) {
+      return (
+        <button className="logout" onClick={handleBack}>
+          Back
+        </button>
+      );
+    }
+    if (page === 0) {
+      return (
+        <button className="logout" onClick={handleNext}>
+          Next
+        </button>
+      );
+    } else {
+      return (
+        <>
+          <button className="logout" onClick={handleBack}>
+            Back
+          </button>
+          <button className="logout" onClick={handleNext}>
+            Next
+          </button>
+        </>
+      );
+    }
+  };
 
   return (
     <div>
       <h1>This is the setup page.</h1>
       <div>
-        <whichPage />
+        {whichPage()}
+        {whichButtons()}
       </div>
     </div>
   );
