@@ -15,11 +15,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
     "react-tinder-card": "^1.4.5",
-=======
     "uuid": "^8.3.2",
->>>>>>> 3bf705ddef5bdd2d01364439afa6de5486ce73b8
     "web-vitals": "^2.1.0",
     "yarn": "^1.22.19"
   },
