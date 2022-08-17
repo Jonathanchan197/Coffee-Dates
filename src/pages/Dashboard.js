@@ -4,7 +4,7 @@ import { supabase } from "../supabase";
 import Clock from '../dashboard_tools/Clock';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-
+import Todo from "../dashboard_tools/Todo";
 
 
 const Dashboard = () => {
@@ -28,6 +28,7 @@ const Dashboard = () => {
       <h1 className="title"> Welcome back {name}!</h1>
       < Clock />
       < Calendar />
+      < Todo />
       {/* <h2> Connections </h2> TODO: connect with supabase count howmany connections */}
 
     </div>
