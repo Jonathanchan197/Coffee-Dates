@@ -10,7 +10,8 @@ const Setup = () => {
   const [formData, setFormData] = useState({
     isMentor: null,
     industry: "",
-    image: "",
+    image: {},
+    avatarUrl: "",
     bio: "",
     name: "",
     website: "",
@@ -32,7 +33,7 @@ const Setup = () => {
       case 3:
         return <Fourth formData={formData} setFormData={setFormData} />;
       case 4:
-        return <Review formData={formData} />;
+        return <Review formData={formData} setFormData={setFormData} />;
       default:
         return <First formData={formData} setFormData={setFormData} />;
     }
