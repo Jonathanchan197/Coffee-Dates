@@ -18,6 +18,8 @@ function Todo() {
     if (response) {
       setIsMentor(response.data[0].mentor);
     }
+
+    console.log(isMentor);
   }
 
   async function fetchInfo() {
@@ -29,22 +31,21 @@ function Todo() {
       .match({ id: auth.user.id });
 
     setItems(response.data[0].tasks);
-    console.log(response.data[0].tasks)
   }
 
-    //************************************************** */
+  //************************************************** */
 
-    function addItem() {
-      if (!newItem) { //If there is nothing will stop function and notify user
-        alert("Please add something in!");
-        return;
-      }
-      setItems([...items, newItem], newItem)
-      console.log(items);
-      setNewItem("");
+  function addItem() {
+    if (!newItem) {
+      //If there is nothing will stop function and notify user
+      alert("Please add something in!");
+      return;
     }
+    setItems([...items, newItem]);
+    setNewItem("");
+  }
 
-    async function updateInfo() {
+  async function updateInfo() {
     const tableName = isMentor ? "mentors" : "mentees";
 
     const { data, error } = await supabase.from(`${tableName}`).upsert({
@@ -53,19 +54,19 @@ function Todo() {
     });
 
     if (error) {
-      console.log(error);
+      console.log(error.message);
     }
 
     if (data) {
-      console.log("Tasks has been updated! :D");
+      console.log("Tasks have been updated! :D");
     }
-  };
-    //************************************************** */
+  }
+  //************************************************** */
 
-  // function deleteItem(id) {
-  //   const arr = items.filter(item => item.id !== id);
-  //   setItems(arr);
-  // }
+  function deleteItem(item) {
+    const filteredItems = items.filter((i) => i !== item);
+    setItems(filteredItems);
+  }
 
   useEffect(() => {
     fetchMentorOrMentee();
@@ -84,14 +85,19 @@ function Todo() {
         }}
         placeholder="Type something..."
       />
-      <button className="success" onClick={async() => {addItem()}}>Probs does something</button>
+      <button className="success" onClick={addItem}>
+        Probs does something
+      </button>
       <ul>
         {items.map((item) => {
           return (
             <li key={item}>
               {item}
-              <span>  </span>
-              {/* <button className="cross" onClick={() => deleteItem(item)}>❌</button> */}
+              <span> </span>
+              <button className="cross" onClick={() => deleteItem(item)}>
+                ❌
+              </button>{" "}
+              {/* add margin */}
             </li>
           );
         })}
@@ -101,3 +107,5 @@ function Todo() {
 }
 
 export default Todo;
+
+//TODO: add save button that has an onClick to updateInfo()
