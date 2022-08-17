@@ -18,8 +18,6 @@ function Todo() {
     if (response) {
       setIsMentor(response.data[0].mentor);
     }
-
-    console.log(isMentor);
   }
 
   async function fetchInfo() {
