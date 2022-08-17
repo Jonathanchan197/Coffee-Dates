@@ -1,23 +1,11 @@
-import { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
 import { useAuth } from "../auth";
 
 const Review = ({formData}) => {
   const auth = useAuth();
 
-  async function fetchCurrentUserData() {
-    await supabase
-      .from() // THIS WILL EVENTUALLY PULL FROM "mentors" or "mentees"
-      .select()
-      .match({ id: auth.user.id });
-  }
-  useEffect(() => {
-    fetchCurrentUserData();
-  }, []);
-
   const handleMentor = async (e) => {
     e.preventDefault();
-
 
     const { data, error } = await supabase.from("mentors").upsert({
       id: auth.user.id,

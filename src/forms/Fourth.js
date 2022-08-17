@@ -1,12 +1,10 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 
-const Fourth = ({formData, setFormData}) => {
+const Fourth = ({ formData, setFormData }) => {
   const [skillsList, setSkillsList] = useState([]);
   const [selectedSkill, setSelectedSkill] = useState([]);
-  const [skills, setSkills] = useState([]);
 
-useEffect(() => {
   async function fetchSkillsList() {
     const response = await supabase.from("skills").select("name");
 
@@ -14,29 +12,32 @@ useEffect(() => {
       setSkillsList(response.data.map((s) => s.name));
     }
   }
-  fetchSkillsList();
-},[skills]);
 
-const addSkill = (e) => {
-  e.preventDefault();
-  if (selectedSkill !== undefined) {
-    setSkills([...skills, selectedSkill]);
-    setFormData({...formData, skills: [...skills, selectedSkill]});
-  }
-};
+  useEffect(() => {
+    fetchSkillsList();
+  }, []);
 
-const removeSkill = (e, skill) => {
-  e.preventDefault();
-  const list = skills;
-  setSkills(list.filter((s) => s !== skill));
-};
+  const addSkill = (e) => {
+    e.preventDefault();
+    if (selectedSkill !== undefined) {
+      setFormData({ ...formData, skills: [...formData.skills, selectedSkill] });
+    }
+  };
+
+  const removeSkill = (e, skill) => {
+    e.preventDefault();
+    let list = formData.skills;
+    list = list.filter((s) => s !== skill);
+    setFormData({ ...formData, skills: [...list] });
+  };
 
   return (
     <div>
       <div className="form-group">
         <label htmlFor="skills">Skills:</label>
+        {console.log("TEST:", formData.skills)}
         <ul>
-          {skills.length === 0
+          {formData.skills.length === 0
             ? "No skills to show."
             : formData.skills.map((s) => (
                 <li>
@@ -47,12 +48,12 @@ const removeSkill = (e, skill) => {
         <select
           name="skills"
           onChange={(e) => {
-            setSelectedSkill(e.target.value)
+            setSelectedSkill(e.target.value);
           }}
         >
           <option key="default"></option>
           {skillsList.map((option) =>
-            skills.includes(option) ? null : (
+            formData.skills.includes(option) ? null : (
               <option value={option} key={option}>
                 {option}
               </option>
