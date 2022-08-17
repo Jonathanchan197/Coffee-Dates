@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { useAuth } from '../auth'
 import { supabase } from "../supabase";
+import Clock from '../dashboard_tools/Clock';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+
+
 
 const Dashboard = () => {
   const [name, setName] = useState("");
 
   const auth = useAuth();
-
-  const date = new Date();
-  const day = date.getDate();
-  const year = date.getFullYear();
-  const month = date.getMonth();
 
   useEffect(() => {
     const fetchInfo = async () => {
@@ -26,7 +26,10 @@ const Dashboard = () => {
   return (
     <div>
       <h1 className="title"> Welcome back {name}!</h1>
-      <h2>{day}/{month}/{year}</h2>
+      < Clock />
+      < Calendar />
+      {/* <h2> Connections </h2> TODO: connect with supabase count howmany connections */}
+
     </div>
   );
 };
