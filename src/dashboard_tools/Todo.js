@@ -104,6 +104,7 @@ function Todo() {
             })
           : null}
       </ul>
+      <button onClick={updateInfo}>Save</button>
     </div>
   );
 }
