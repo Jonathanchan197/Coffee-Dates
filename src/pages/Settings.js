@@ -21,12 +21,12 @@ const Settings = () => {
 
   async function fetchMentorOrMentee() {
     const response = await supabase
-      .from("mentors")
+      .from("users")
       .select()
       .match({ id: auth.user.id });
 
-      if (response.body.length === 1) {
-        setIsMentor(true);
+      if (response) {
+        setIsMentor(response.data[0].mentor);
       }
   }
 
@@ -138,7 +138,7 @@ const Settings = () => {
           className="pfp"
           src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${avatarUrl}`}
           width={200}
-          alt=""
+          alt={avatarUrl}
         />
       ) : (
         "No avatar set."
