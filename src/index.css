@@ -21,12 +21,21 @@ body {
   padding-bottom: 2em;
 }
 
+h2 {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
 a {
   text-decoration: none;
   color: var(--lighter-color)
 }
 input, select {
   margin-bottom: 2em;
+}
+
+button {
+  cursor: pointer;
 }
 
 form {

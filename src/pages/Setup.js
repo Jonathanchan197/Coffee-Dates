@@ -45,33 +45,33 @@ const Setup = () => {
     setPage(page + 1);
   };
 
-  const whichButtons = () => {
-    if (page >= 4) {
-      return buttons = (
-        <button className="logout" onClick={handleBack}>
-          Back
-        </button>
-      );
-    }
-    if (page <= 1) {
-      return buttons = (
-        <button className="logout" onClick={handleNext}>
-          Next
-        </button>
-      );
-    } else {
-      return buttons = (
-        <>
-          <button className="logout" onClick={handleBack}>
-            Back
-          </button>
-          <button className="logout" onClick={handleNext}>
-            Next
-          </button>
-        </>
-      );
-  }
-};
+//   const whichButtons = () => {
+//     if (page >= 4) {
+//       return buttons = (
+//         <button className="logout" onClick={handleBack}>
+//           Back
+//         </button>
+//       );
+//     }
+//     if (page <= 1) {
+//       return buttons = (
+//         <button className="logout" onClick={handleNext}>
+//           Next
+//         </button>
+//       );
+//     } else {
+//       return buttons = (
+//         <>
+//           <button className="logout" onClick={handleBack}>
+//             Back
+//           </button>
+//           <button className="logout" onClick={handleNext}>
+//             Next
+//           </button>
+//         </>
+//       );
+//   }
+// };
 
   return (
     <div>
