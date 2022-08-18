@@ -6,16 +6,6 @@ const Third = ({ formData, setFormData }) => {
       <div className="form-group">
         <label htmlFor="avatar">Choose Avatar</label>
         <br />
-        {/* {formData.avatarUrl !== "" ? (
-          <img
-            className="pfp"
-            src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${formData.image}`}
-            width={200}
-            alt=""
-          />
-        ) : (
-          "No avatar set."
-        )} */}
         <input
           type="file"
           accept={"image/jpeg image/png"}

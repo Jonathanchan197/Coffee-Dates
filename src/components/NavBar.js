@@ -45,7 +45,7 @@ const NavBar = () => {
             </li>
             <li className="navLink">
               <Link className="links" to={"/mentornotifications"}>
-                mentor
+                Mentor
               </Link>
             </li>
             <li className="navLink">
@@ -54,7 +54,7 @@ const NavBar = () => {
               </Link>
             </li>
             <li className="navLink">
-              <Link className="links" to={"/profile"}>
+              <Link className="links" to={`/profile/${auth.user.id}`}>
                 Profile
               </Link>
             </li>

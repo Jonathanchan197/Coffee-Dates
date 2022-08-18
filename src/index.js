@@ -18,6 +18,7 @@ import Chats from "./pages/Chats";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+<<<<<<< HEAD
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
@@ -81,4 +82,56 @@ root.render(
       </BrowserRouter>
     </AuthProvider>
   </React.StrictMode>
+=======
+  // <React.StrictMode>
+  <AuthProvider>
+    <BrowserRouter>
+      <NavBar />
+      <div className="all">
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path={"sign-up"} element={<SignUp />} />
+          <Route path={"setup"} element={<Setup />} />
+          <Route path={"sign-in"} element={<SignIn />} />
+          <Route
+            path={"dashboard"}
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route path={"profile"}>
+            <Route path={":userId"} element={<Profile />} />
+          </Route>
+          <Route
+            path={"settings"}
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"match"}
+            element={
+              <ProtectedRoute>
+                <Match />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"mentornotifications"}
+            element={
+              <ProtectedRoute>
+                <MentorNotification />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  </AuthProvider>
+  // </React.StrictMode>
+>>>>>>> f651e2f64fa43ef0023b7b851346d396982852ac
 );

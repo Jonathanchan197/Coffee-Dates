@@ -457,4 +457,25 @@ select {
 }
 
 
+/* Profile */
+
+.profiletitle {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pfpname {
+  text-align: center;
+  width: 40%;
+}
+
+.infos {
+  width: 40%;
+}
 
