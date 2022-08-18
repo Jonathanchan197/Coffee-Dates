@@ -45,11 +45,6 @@ const Chats = () => {
       if (data) {
         setRooms(data);
       }
-
-      if (!data) {
-        alert("no chats found!");
-        return;
-      }
     }
   };
 
