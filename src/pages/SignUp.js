@@ -24,9 +24,9 @@ const SignUp = () => {
   };
 
   return (
-    <div>
+    <div className="access">
       {message && message}
-      <h1>Register today! Or else.</h1>
+      <h1>Come Join Us!</h1>
 
       <form onSubmit={handleRegister}>
         <p>Email</p>

@@ -130,7 +130,7 @@ const Settings = () => {
   };
 
   return (
-    <div>
+    <div className="setting">
       <h1>Settings</h1>
       <br />
       {avatarUrl ? (
@@ -145,7 +145,7 @@ const Settings = () => {
       )}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="avatar">Choose Avatar:</label>
+          <label htmlFor="avatar">Choose Avatar</label>
           <input
             type="file"
             accept={"image/jpeg image/png"}
@@ -154,7 +154,7 @@ const Settings = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="name">Display name:</label>
+          <label htmlFor="name">Display name</label>
           <br />
           <input
             className="textField"
@@ -165,7 +165,7 @@ const Settings = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="industry">Biography:</label>
+          <label htmlFor="industry">Biography</label>
           <br />
           <textarea
             className="textbox"
@@ -175,7 +175,8 @@ const Settings = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="industry">Industry:</label>
+          <br/>
+          <label htmlFor="industry">Industry</label>
           <br />
           <select
             name="industry"
@@ -194,18 +195,20 @@ const Settings = () => {
             )}
           </select>
         </div>
-
+        <br/>
         <div className="form-group">
-          <label htmlFor="skills">Skills:</label>
+          <label className="skilltitle" htmlFor="skills">Skills</label>
           <ul>
+            <div className="listerlist">
             {skills.length === 0
               ? "No skills to show."
               : skills.map((s) => (
-                  <li>
+                  <p className="skilling">
                     {s}{" "}
                     <button onClick={(e) => removeSkill(e, s)}>Remove</button>
-                  </li>
+                  </p>
                 ))}
+                </div>
           </ul>
           <select
             name="skills"
@@ -225,7 +228,7 @@ const Settings = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="website">Website:</label>
+          <label htmlFor="website">Website</label>
           <br />
           <input
             className="textField"
@@ -236,7 +239,7 @@ const Settings = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="isMentor">I am a mentor</label>
+          <label htmlFor="isMentor">I am a mentor </label>
           <input
             type="checkbox"
             value={isMentor}

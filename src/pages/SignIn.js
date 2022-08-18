@@ -25,9 +25,9 @@ const Signin = () => {
   };
 
   return (
-    <div>
+    <div className="access">
       {message && message}
-      <h1>Welcome Back! Log in NOW.</h1>
+      <h1>Welcome Back!</h1>
 
       <form onSubmit={handleSignIn}>
         <p>Email</p>

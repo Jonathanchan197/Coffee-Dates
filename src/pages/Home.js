@@ -22,11 +22,11 @@ const Home = () => {
   return (
     <div>
       {auth.user ? <h1 className="title">Hey {name}!</h1> : <h1 className="title" >Welcome to Coffee Date!</h1>}
-      <p>We are Coffee Date!</p>
-      <p>One of the first webapps that make it easier to connect with other people in your industry!</p>
-      <p>At Coffee date we are here to help people like you connect with industry leaders and provide mentorship!</p>
-      <p>It doesn't matter whether you have just started or been in your industry for a while, coffee date caters to all level of experiences!</p>
-
+      <p className="intro">We are Coffee Date!</p>
+      <p className="intro" >One of the first webapps that make it easier to connect with other people in your industry!</p>
+      <p className="intro">At Coffee date we are here to help people like you connect with industry leaders and provide mentorship!</p>
+      <p className="intro">It doesn't matter whether you have just started or been in your industry for a while, coffee date caters to all level of experiences!</p>
+      <div className="instructions">
       <h2> Getting Started </h2>
       {auth.user ? '' : <p> - Create your account! </p>}
       <p> -If you are a <strong>Mentee</strong>, go to find my Mentor</p>
@@ -38,6 +38,7 @@ const Home = () => {
       <p> -If you have been liked by a mentee, you can accept their invite! </p>
       <p> -Mentees will receive a notification!</p>
       <p> -Start chatting and Teach! </p>
+      </div>
 
     </div>
   );
