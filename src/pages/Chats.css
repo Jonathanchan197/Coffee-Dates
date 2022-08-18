@@ -1,0 +1,9 @@
+.chats_container {
+    width: 950px;
+    margin: 0 auto;
+}
+
+.chat {
+    height: 100px;
+    width: 300px;
+}

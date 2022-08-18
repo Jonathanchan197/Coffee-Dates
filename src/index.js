@@ -14,6 +14,7 @@ import Settings from "./pages/Settings";
 import NavBar from "./components/NavBar";
 import Match from "./pages/Match";
 import MentorNotification from "./pages/MentorNotification";
+import Chats from "./pages/Chats";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -64,6 +65,14 @@ root.render(
               element={
                 <ProtectedRoute>
                   <MentorNotification />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={"chats"}
+              element={
+                <ProtectedRoute>
+                  <Chats />
                 </ProtectedRoute>
               }
             />

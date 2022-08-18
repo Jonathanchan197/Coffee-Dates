@@ -34,6 +34,11 @@ const NavBar = () => {
         {auth.user ? (
           <>
           <li className="navLink">
+              <Link className="links" to={"/chats"}>
+                Chats
+              </Link>
+            </li>
+          <li className="navLink">
               <Link className="links" to={"/match"}>
                 Matches
               </Link>
