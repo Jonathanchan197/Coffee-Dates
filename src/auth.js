@@ -31,7 +31,7 @@ function useProvideAuth() {
     const { error, user } = await supabase.auth.signUp(
       { email, password },
       {
-        redirectTo: "http://localhost:3000/setup",
+        redirectTo: "https://62fe5e0984ea8802cba0012e--stunning-entremet-0abbec.netlify.app/setup",
       }
     );
 

@@ -8,31 +8,6 @@ function Todo() {
   const [items, setItems] = useState([]);
   const [isMentor, setIsMentor] = useState(false);
 
-  /******************************************** */
-  async function fetchMentorOrMentee() {
-    const response = await supabase
-      .from("users")
-      .select()
-      .match({ id: auth.user.id });
-
-    if (response) {
-      setIsMentor(response.data[0].mentor);
-    }
-  }
-
-  async function fetchInfo() {
-    const tableName = isMentor ? "mentors" : "mentees";
-
-    const response = await supabase
-      .from(`${tableName}`)
-      .select()
-      .match({ id: auth.user.id });
-
-    setItems(response.data[0].tasks);
-  }
-
-  //************************************************** */
-
   function addItem() {
     if (!newItem) {
       //If there is nothing will stop function and notify user
@@ -67,6 +42,26 @@ function Todo() {
   }
 
   useEffect(() => {
+    async function fetchMentorOrMentee() {
+      const response = await supabase
+        .from("users")
+        .select()
+        .match({ id: auth.user.id });
+  
+      if (response) {
+        setIsMentor(response.data[0].mentor);
+      }
+    }
+    async function fetchInfo() {
+      const tableName = isMentor ? "mentors" : "mentees";
+  
+      const response = await supabase
+        .from(`${tableName}`)
+        .select()
+        .match({ id: auth.user.id });
+  
+      setItems(response.data[0].tasks);
+    }
     fetchMentorOrMentee();
     fetchInfo();
   }, [isMentor]);
@@ -111,7 +106,7 @@ function Todo() {
             </div>
           </div>
         </ul>
-        { items.length != 0 ?
+        { items.length !== 0 ?
         <button onClick={updateInfo} id="dtodobuttonsave">
           Save
         </button>
