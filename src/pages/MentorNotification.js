@@ -5,7 +5,6 @@ import userEvent from "@testing-library/user-event";
 
 const MentorNotification = () => {
   const auth = useAuth();
-  // const [menteeIds, setMenteeIds] = useState([]);
   const [mentees, setMentees] = useState([]);
   let menteeList = [];
 

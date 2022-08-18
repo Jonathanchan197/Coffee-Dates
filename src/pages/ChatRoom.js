@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../supabase";
-import { AuthUser } from "@supabase/supabase-js";
-import { useParams } from 'react-router-dom'
+import { useParams } from "react-router-dom";
 
 const ChatRoom = () => {
-    const {roomId} = useParams()
-    console.log(roomId)
+  const { chatId } = useParams();
 
   return (
-    <div>   
-        Chatroom page
+    <div>
+      <h1>Chat Room Id: {chatId}</h1>
     </div>
-  )
+  );
 };
 
 export default ChatRoom;
