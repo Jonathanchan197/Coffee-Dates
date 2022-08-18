@@ -116,7 +116,7 @@ const Chats = () => {
               <>
               <p key={room.id} class="room">
                 <Link className="chatLink" to={`/chatroom/${room.id}`}>
-                  {room.id}
+                  Go to chat
                 </Link>
               </p>
               </>
