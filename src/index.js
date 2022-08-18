@@ -46,14 +46,7 @@ root.render(
           <Route path={"profile"}>
             <Route path={":userId"} element={<Profile />} />
           </Route>
-          <Route
-            path={"settings"}
-            element={
-              <ProtectedRoute>
-                <Settings />
-              </ProtectedRoute>
-            }
-          />
+          <Route path={"settings"} element={<Settings />} />
           <Route
             path={"match"}
             element={

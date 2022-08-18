@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <div>
       {auth.user ? <h1 className="title bounce">Hey {name}!</h1> : <h1 className="title bounce" >Welcome to Coffee Date!</h1>}
-      <p className="intro">We are Coffee Date!</p>
+      <p className="intro">We are Coffee Date!!!</p>
       <p className="intro" >One of the first webapps that make it easier to connect with other people in your industry!</p>
       <p className="intro">At Coffee date we are here to help people like you connect with industry leaders and provide mentorship!</p>
       <p className="intro">It doesn't matter whether you have just started or been in your industry for a while, coffee date caters to all level of experiences!</p>
