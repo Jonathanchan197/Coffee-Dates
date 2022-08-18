@@ -825,6 +825,33 @@ select {
   color: rgba(128, 128, 128, 0.533);
 }
 
+ /* request */
+
+.request {
+  text-align: center;
+}
+
+.request li {
+  list-style: none;
+}
+
+.accept {
+  background-color: var(--green);
+  transition: 0.5s;
+}
+
+.accept:hover {
+  color: white;
+}
+
+.decline {
+  background-color: var(--red);
+  transition: 0.5s;
+}
+
+.decline:hover {
+  color: white;
+}
 /* calendar */
 
 .react-calendar {
