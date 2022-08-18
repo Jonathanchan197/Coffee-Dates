@@ -68,8 +68,8 @@ const Requests = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Requests</h1>
+    <div className="request">
+      <h1 className="title bounce">Requests</h1>
       <div className="notification_container">
         {mentees.length === 0 ? (
           <p>No requests yet.</p>
@@ -81,8 +81,8 @@ const Requests = () => {
                 <li key={user.id}>
                   <h2>{user.name}</h2>
                 </li>
-                <button onClick={() => handleAccept(user.id)}>Accept</button>
-                <button onClick={() => handleRejection(user.id)}>Reject</button>
+                <button className="accept" onClick={() => handleAccept(user.id)}>Accept</button>
+                <button className="decline" onClick={() => handleRejection(user.id)}>Reject</button>
               </>
             ))}
           </ul>
