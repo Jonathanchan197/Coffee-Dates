@@ -20,12 +20,12 @@ const ChatRoom = () => {
   const fetchMessages = async () => {
     const {data} = await supabase.from('messages').select().match({room_id: chatId})
     setMessages(data)
-    fetchMessages();
   }
 
   const handleSubmit = async (e) => {
     const {data} = await supabase.from('messages').insert({content: e, name: auth.user.id, room_id: chatId})
     console.log(data)
+    fetchMessages();
   }
 
   const handleSend = text => { 
