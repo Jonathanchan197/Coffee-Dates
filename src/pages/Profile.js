@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabase";
-import { useAuth } from "../auth";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Profile = () => {
-  const auth = useAuth();
-
+  const { userId } = useParams();
   const [avatarUrl, setAvatarUrl] = useState("");
   const [name, setName] = useState("");
   const [industry, setIndustry] = useState([]);
@@ -18,7 +16,7 @@ const Profile = () => {
     const response = await supabase
       .from("users")
       .select()
-      .match({ id: auth.user.id });
+      .match({ id: userId });
 
     if (response) {
       setIsMentor(response.data[0].mentor);
@@ -31,7 +29,7 @@ const Profile = () => {
     const response = await supabase
       .from(`${tableName}`)
       .select()
-      .match({ id: auth.user.id });
+      .match({ id: userId });
 
     setAvatarUrl(response.data[0].avatar_url);
     setName(response.data[0].name);
