@@ -15,7 +15,7 @@ const ChatRoom = () => {
   const auth = useAuth();
   const { chatId } = useParams();
   const [messages, setMessages] = useState([]);
-
+  
   const fetchMessages = async () => {
     const {data} = await supabase.from('messages').select().match({room_id: chatId})
     setMessages(data)
@@ -23,8 +23,8 @@ const ChatRoom = () => {
   
   const handleSubmit = async (e) => {
     const {data} = await supabase.from('messages').insert({content: e, name: auth.user.id, room_id: chatId})
+    setMessages([...messages, {...data[0]}])
     console.log(data)
-    fetchMessages();
   }
 
   const handleSend = text => { 
@@ -43,15 +43,27 @@ const ChatRoom = () => {
     fetchMessages();
   }, []);
 
+  useEffect(() => {
+    const subscription = supabase.from('messages').on('INSERT', (payload) => {
+      setMessages((current) => [...current, payload.new])
+      console.log(payload)
+    }).subscribe()
+    return () => {
+      supabase.removeSubscription(subscription)
+    }
+  }, []);
+
   return (
     <div>
-      <h1>Chat Room Id: {chatId}</h1>
+      <h1 className="title bounce">Chat Room</h1>
     <div style={{ position: "relative", height: "500px" }}>
-      <MainContainer>
+      <MainContainer style={{borderRadius: "25px"}}>
         <ChatContainer>
           <MessageList>
             {messages.map(m => 
-              <Message model={{message: m.content, sender: m.name, direction: checkOutgoing(m.name)}}/>)}
+              <Message key={m.id} model={{message: m.content, sender: m.name, direction: checkOutgoing(m.name)}}
+              /> 
+            )}
           </MessageList>
         <MessageInput placeholder="Type message here" onSend={handleSend} />
       </ChatContainer>

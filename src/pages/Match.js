@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../supabase";
 import { useAuth } from "../auth";
 import TinderCard from "react-tinder-card";
-import "./TinderCard.css";
 
 const Match = () => {
   const auth = useAuth();
@@ -112,8 +111,9 @@ const Match = () => {
   }, [industry]);
 
   return (
-    <div>
-      <h1>Find a Mentor</h1>
+    <div className="empty">
+      <div className="yeahnah"><p>✕</p><p>✓</p></div>
+      <h1 className="headings bounce">Find a Mentor</h1>
       <div className="card_container">
         {mentors.map((person) => (
           <TinderCard
@@ -123,14 +123,16 @@ const Match = () => {
             onCardLeftScreen={() => onCardLeftScreen(person.id)}
             preventSwipe={["up", "down"]}
           >
-            <div
-              style={{
-                backgroundImage: `url("https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${person.avatar_url}")`,
-              }}
-              className="card"
-            >
-              <h3>{person.name}</h3>
-              <h4>{person.industry}</h4>
+            
+              <div
+                style={{
+                  backgroundImage: `url("https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${person.avatar_url}")`,
+                }}
+                className="card"
+              >
+                <div></div>
+                <h3>{person.name}</h3>
+                <h4>{person.industry}</h4>
             </div>
           </TinderCard>
         ))}
