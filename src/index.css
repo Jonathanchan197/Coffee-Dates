@@ -344,6 +344,11 @@ select {
   color: var(--light-color);
 }
 
+.choice:focus {
+  background-color: grey;
+  color: #fff;
+}
+
 /* Multipage Buttons */
 
 .buttonz {
