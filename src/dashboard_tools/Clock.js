@@ -10,7 +10,7 @@ function Clock() {
     }, 1000);
   }, []);
 
-  return <div>{clock}</div>;
+  return <div className="clock">{clock}</div>;
 }
 
 

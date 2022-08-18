@@ -73,36 +73,48 @@ function Todo() {
 
   return (
     <div>
-      <h1>Jot it down!</h1>
-      <input
-        className="textField"
-        type="text"
-        value={newItem}
-        onChange={(e) => {
-          setNewItem(e.target.value);
-        }}
-        placeholder="Type something..."
-      />
-      <button className="success" onClick={addItem}>
-        Probs does something
-      </button>
-      <ul>
-        {items
-          ? items.map((item) => {
-              return (
-                <li key={item}>
-                  {item}
-                  <span> </span>
-                  <button className="cross" onClick={() => deleteItem(item)}>
-                    ❌
-                  </button>{" "}
-                  {/* add margin */}
-                </li>
-              );
-            })
-          : null}
-      </ul>
-      <button onClick={updateInfo}>Save</button>
+      <h1 className="dtodotitle">Jot it down!</h1>
+      <div className="dtodoupdate">
+        <input
+          className="textField"
+          id="dtodoinput"
+          type="text"
+          value={newItem}
+          onChange={(e) => {
+            setNewItem(e.target.value);
+          }}
+          placeholder="Type something..."
+        />
+        <button className="success" id="dtodobutton" onClick={addItem}>
+          Post
+        </button>
+      </div>
+      <div className="dtodolist">
+        <ul>
+          <div className="dtodolistitem">
+            <div>
+              {items
+                ? items.map((item) => {
+                    return (
+                      <li key={item}>
+                        <button
+                          className="cross"
+                          onClick={() => deleteItem(item)}
+                        >
+                          ✕
+                        </button>{" "}
+                        {item}
+                      </li>
+                    );
+                  })
+                : null}
+            </div>
+          </div>
+        </ul>
+        <button onClick={updateInfo} id="dtodobuttonsave">
+          Save
+        </button>
+      </div>
     </div>
   );
 }
