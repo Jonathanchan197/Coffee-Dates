@@ -48,7 +48,7 @@ const Profile = () => {
 
   return (
     <div>
-      <h1>Profile</h1>
+      <h1 className="profiletitle">Profile</h1>
       <div className="profile">
         <div className="pfpname">
           {avatarUrl ? (
@@ -62,14 +62,14 @@ const Profile = () => {
               Time to get a profile picture, no one will swipe right on you.
             </p>
           )}
-          <p>Name: {name}</p>
+          <p>{name}</p>
         </div>
         <div className="infos">
           <p>Industry: {industry}</p>
           <p>
             Skills:{" "}
             {skills.map((skill) =>
-              skills.length === 0 ? <></> : <li>{skill}</li>
+              skills.length === 0 ? <></> : <p>{skill}</p>
             )}
           </p>
           <p>Website: {website}</p>

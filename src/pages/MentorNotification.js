@@ -7,7 +7,7 @@ const MentorNotification = () => {
   const auth = useAuth();
   // const [menteeIds, setMenteeIds] = useState([]);
   const [mentees, setMentees] = useState([]);
-  const menteeList = [];
+  let menteeList = [];
 
   const fetchMenteeIds = async () => {
     const { data } = await supabase
@@ -25,9 +25,10 @@ const MentorNotification = () => {
     const response = await supabase.from("mentees").select().match({ id: uid });
 
     if (response) {
-      console.log("RESPONSE:", response.data[0]);
-      menteeList.push(response.data[0]);
+      console.log("RESPONSE:", response.data);
+      // menteeList.push(response.data[0]);
       // console.log("MENTEES:", menteeList);
+      menteeList = [...menteeList, response.data[0]];
       setMentees(menteeList);
     }
   };

@@ -459,19 +459,23 @@ select {
 
 /* Profile */
 
-.profile h1 {
+.profiletitle {
   text-align: center;
+  margin-bottom: 2em;
 }
 
 .profile {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .pfpname {
-  width: 30%;
+  text-align: center;
+  width: 40%;
 }
 
 .infos {
-  width: 65%;
+  width: 40%;
 }
 
