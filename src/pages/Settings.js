@@ -201,7 +201,7 @@ const Settings = () => {
           <ul>
             <div className="listerlist">
             {skills.length === 0
-              ? "No skills to show."
+              ? <p id="skilledlists">No skills to show.</p>
               : skills.map((s) => (
                   <p className="skilling">
                     {s}{" "}
