@@ -3,9 +3,7 @@ import { useAuth } from '../auth'
 import { supabase } from "../supabase";
 
 const Home = () => {
-  
   const [name, setName] = useState("");
-
   const auth = useAuth();
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { supabase } from "./supabase";
 import { useState, useEffect, useContext, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const authContext = createContext();
 
@@ -14,6 +15,7 @@ export const useAuth = () => {
 
 function useProvideAuth() {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   const login = async (email, password) => {
     const { error, user } = await supabase.auth.signIn({ email, password });
@@ -26,9 +28,12 @@ function useProvideAuth() {
   };
 
   const register = async (email, password) => {
-    const { error, user } = await supabase.auth.signUp({ email, password },{
-      redirectTo: "http://localhost:3000/setup"
-    });
+    const { error, user } = await supabase.auth.signUp(
+      { email, password },
+      {
+        redirectTo: "http://localhost:3000/setup",
+      }
+    );
 
     if (error) {
       console.log(error);
@@ -45,10 +50,10 @@ function useProvideAuth() {
     }
 
     setUser(null);
+    navigate("/");
   };
 
   useEffect(() => {
-    //Checks for session evry time it loads
     const user = supabase.auth.user();
     setUser(user);
 
@@ -69,6 +74,6 @@ function useProvideAuth() {
     user,
     login,
     register,
-    logout
+    logout,
   };
 }
