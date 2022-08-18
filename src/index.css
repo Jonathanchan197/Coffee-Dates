@@ -8,9 +8,26 @@
 :root {
   --darker-color: #2C3639;
   --dark-color: #3F4E4F;
+  --even-lighter-color: #bb9f89ac;
   --light-color: #A27B5C;
   --lighter-color: #DCD7C9;
+  --green: rgb(110, 158, 110);
+  --red: rgb(159, 86, 86);
 }
+
+/* keyframes */
+
+.bounce {
+  animation: bounce 1s infinite;
+}
+@keyframes bounce {
+  0% {
+  transform: translate(0, 0px);
+  }
+  50% {
+  transform: translate(0, 5px);
+  }
+} 
 
 body {
   background-color: #DCD7C9;
@@ -34,8 +51,22 @@ input, select {
   margin-bottom: 2em;
 }
 
+select {
+  padding-left: 1em;
+  width: 400px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--even-lighter-color);
+}
+
 button {
   cursor: pointer;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  border-radius: 2px;
 }
 
 form {
@@ -52,6 +83,10 @@ select {
   padding: 15px;
   height: 25px;
 } */
+
+.diffcolorfont {
+  color: var(--light-color);
+}
 
 .pfp {
   object-fit: cover;
@@ -261,4 +296,143 @@ select {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+}
+
+/* SETUP */
+
+.question {
+  text-align: center;
+  font-size: 300%;
+}
+
+.splitter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+  height: 50vh;
+}
+
+.splitter div{
+  border-radius: 5%;
+}
+
+.choice {
+  position: relative;
+  border: 2px solid var(--dark-color);
+  border-radius: 5px;
+  width: 70%;
+  height: 40%;
+  top: 29%;
+  left: 15%;
+  font-size: 180%;
+  transition: 0.3s;
+}
+
+.choice:hover {
+  border: 3px var(--green) dashed;
+  color: var(--light-color);
+  text-decoration: underline;
+}
+
+/* Multipage Buttons */
+
+.buttonz {
+  display: flex;
+  justify-content: space-between;
+}
+
+.firstpage {
+  width: 75vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.back {
+  font-size: 300%;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+  transition: 0.5s;
+}
+
+.back:hover {
+  color: var(--red);
+}
+
+.next {
+  font-size: 300%;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+  transition: 0.5s;
+}
+.next:hover {
+  color: var(--green);
+}
+
+/* Setup - second page */
+
+.second {
+  text-align: center;
+}
+.second h2{
+  font-size: 200%;
+  margin-bottom: 2em;
+}
+
+/* Setup - third page */
+
+.third {
+  margin-top: -2em;
+  text-align: center;
+}
+
+/* Setup - fourth page */
+
+.fourth {
+  text-align: center;
+}
+
+.fourth select {
+  margin-left: 7em;
+}
+
+.fourth #add {
+  margin-left: 2em;
+}
+
+/* Setup - REview page */
+
+.review {
+  text-align: center;
+}
+
+.review h1 {
+  font-size: 200%;
+}
+
+.review button {
+  width: 200px;
+  height: 50px;
+  font-size: 150%;
+}
+
+.reviewcontent {
+  display: flex;
+  padding-left: 30%;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+.reviewcontent h3{
+  padding-bottom: 1em;
 }

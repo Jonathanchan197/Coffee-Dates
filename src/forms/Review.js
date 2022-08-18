@@ -93,15 +93,17 @@ const Review = ({ formData, setFormData }) => {
   };
 
   return (
-    <div>
-      <h2>Please review your Information before posting.</h2>
-      <h3>Mentor Status: {formData.isMentor === true ? "True" : "False"}</h3>
-      <h3>Industry: {formData.industry}</h3>
-      <h3>Image: {formData.image.name}</h3>
-      <h3>Name: {formData.name}</h3>
-      <h3>Bio: {formData.bio}</h3>
-      <h3>Website: {formData.website}</h3>
-      <h3>Skills: {formData.skills}</h3>
+    <div className="review">
+      <h1 className="bounce">Please review your Information before posting.</h1>
+      <div className="reviewcontent">
+      <h3>Mentor Status: <span className="diffcolorfont"> {formData.isMentor === true ? "True" : "False"} </span> </h3>
+      <h3>Industry: <span className="diffcolorfont">{formData.industry}</span> </h3>
+      <h3>Image: <span className="diffcolorfont">{formData.image.name}</span> </h3>
+      <h3>Name: <span className="diffcolorfont">{formData.name}</span> </h3>
+      <h3>Bio: <span className="diffcolorfont">{formData.bio}</span> </h3>
+      <h3>Website: <span className="diffcolorfont">{formData.website}</span> </h3>
+      <h3>Skills: <span className="diffcolorfont">{formData.skills}</span> </h3>
+      </div>
       <button
         className="success"
         onClick={formData.isMentor === true ? handleMentor : handleMentee}

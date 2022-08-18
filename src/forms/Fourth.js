@@ -32,7 +32,8 @@ const Fourth = ({ formData, setFormData }) => {
   };
 
   return (
-    <div>
+    <div className="fourth">
+      <h2 className="bounce">What Skills do you have?</h2>
       <div className="form-group">
         <label htmlFor="skills">Skills:</label>
         {console.log("TEST:", formData.skills)}
@@ -60,7 +61,7 @@ const Fourth = ({ formData, setFormData }) => {
             )
           )}
         </select>
-        <button onClick={(e) => addSkill(e)}>Add skill</button>
+        <button id="add" onClick={(e) => addSkill(e)}>Add skill</button>
       </div>
     </div>
   );

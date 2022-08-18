@@ -53,25 +53,27 @@ const Setup = () => {
   const whichButtons = () => {
     if (page === 4) {
       return (
-        <button className="logout" onClick={handleBack}>
-          Back
+        <button className="back" onClick={handleBack}>
+          ←
         </button>
       );
     }
     if (page === 0) {
       return (
-        <button className="logout" onClick={handleNext}>
-          Next
+        <div className="firstpage">
+        <button className="next" onClick={handleNext}>
+          →
         </button>
+        </div>
       );
     } else {
       return (
         <>
-          <button className="logout" onClick={handleBack}>
-            Back
+          <button className="back" onClick={handleBack}>
+            ←
           </button>
-          <button className="logout" onClick={handleNext}>
-            Next
+          <button className="next" onClick={handleNext}>
+            →
           </button>
         </>
       );
@@ -80,10 +82,11 @@ const Setup = () => {
 
   return (
     <div>
-      <h1>This is the setup page.</h1>
       <div>
         {whichPage()}
+        <div className="buttonz" id="buttonz">
         {whichButtons()}
+        </div>
       </div>
     </div>
   );
