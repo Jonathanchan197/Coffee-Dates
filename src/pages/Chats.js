@@ -7,10 +7,8 @@ import "./Chats.css";
 const Chats = () => {
   const auth = useAuth();
   const [isMentor, setIsMentor] = useState(false);
-  // const [rooms, setRooms] = useState([]);
-  // const [participantIds, setParticipantIds] = useState([]);
+  const [rooms, setRooms] = useState([]);
   const [participants, setParticipants] = useState([]);
-  let participantIdList = [];
   let participantList = [];
 
   const checkMentor = async () => {
@@ -30,10 +28,9 @@ const Chats = () => {
         .from("rooms")
         .select()
         .match({ mentor_participant: auth.user.id });
-      //setRooms(data);
 
       if (data) {
-        data.forEach(room => fetchParticipants(room.id));
+        setRooms(data);
       }
 
       if (!data) {
@@ -45,10 +42,9 @@ const Chats = () => {
         .from("rooms")
         .select()
         .match({ mentee_participant: auth.user.id });
-      //setRooms(data);
 
       if (data) {
-        data.forEach(room => fetchParticipants(room.id));
+        setRooms(data);
       }
 
       if (!data) {
@@ -58,60 +54,61 @@ const Chats = () => {
     }
   };
 
-  const fetchParticipants = async (roomId) => {
+  const fetchParticipantIds = async () => {
     if (isMentor) {
-      const response = await supabase.from("rooms").select().match({id: roomId, mentor_participant: auth.user.id});
+      const { data } = await supabase.from("rooms").select("mentee_participant").match({mentor_participant: auth.user.id});
 
-      if (response) {
-        console.log("RESPONSE:", response.data[0]);
-        participantIdList = [...participantIdList, response.data[0].mentee_participant];
+      if (data) {
+        data.forEach((d) => fetchParticipants(d.mentee_participant));
       }
     } else {
-      const response = await supabase.from("rooms").select().match({id: roomId, mentee_participant: auth.user.id});
+      const { data } = await supabase.from("rooms").select("mentor_participant").match({mentee_participant: auth.user.id});
 
-      if (response) {
-        console.log("RESPONSE:", response.data[0]);
-        participantIdList = [...participantIdList, response.data[0].mentor_participant];
+      if (data) {
+        data.forEach((d) => fetchParticipants(d.mentor_participant));
       }
     }
+  }
 
-    participantIdList.forEach(uid => fetchParticipantUsers(uid));
-  };
+  const fetchParticipants = async (uid) => {
+    let response;
 
-  const fetchParticipantUsers = async (uid) => {
-    const response = await supabase.from("users").select().match({id: uid});
-
-    if (response) {
-      console.log("RESPONSE NAME:", response.data[0].name);
-      participantList = [...participantList, response.data[0]];
+    if (isMentor) {
+      response = await supabase.from("mentees").select().match({ id: uid });
+    } else {
+      response = await supabase.from("mentors").select().match({ id: uid });
     }
 
-    setParticipants(participantList);
-  }
+    if (response) {
+      console.log("RESPONSE:", response.data[0]);
+      participantList = [...participantList, response.data[0]];
+      setParticipants(participantList);
+    }
+  };
 
   useEffect(() => {
     checkMentor();
     fetchRooms();
+    fetchParticipantIds();
   }, [isMentor]);
 
   return (
     <div class="chats_container">
-      {console.log("PARTICIPANT LIST:", participants)}
       {participants.map((participant) => (
         <div key={participant.id} class="chat">
-          Chat with {participant.name}
+          {participant.name}
         </div>
       ))}
 
-        {/* {rooms.map((chat) => 
+      {rooms.map((chat) => (
         <ul>
-            <li key={chat.id} class="chat">
-                <Link className="links" to={`/chatroom/${chat.id}`}>
-                    <p>{chat.id}</p>
-                </Link>
-            </li>
-            </ul>
-        )} */}
+          <li key={chat.id} class="chat">
+            <Link className="links" to={`/chatroom/${chat.id}`}>
+              <p>{chat.id}</p>
+            </Link>
+          </li>
+        </ul>
+      ))}
     </div>
   );
 };
