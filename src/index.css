@@ -756,6 +756,74 @@ select {
 .cross:hover {
   text-shadow: 1px 0.5px;
 }
+/* Match  Tindercard*/
+
+.headings {
+  text-align: center;
+  margin-bottom: 3em;
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  padding: 20px;
+  max-width: 85vw;
+  height: 50vh;
+  border: solid 3px var(--darker-color);
+  border-radius: 25px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card h3 {
+  position: absolute;
+  bottom: 30px;
+  color: white;
+}
+
+.card h4 {
+  position: absolute;
+  bottom: 10px;
+  color: white;
+}
+
+.card div {
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  left: 0px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  bottom: 0px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0));
+
+}
+
+.card_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+.swipe {
+  position: absolute;
+}
+
+.empty {
+  width: 100%;
+  height: 100%;
+}
+
+.yeahnah {
+  width: 1080px;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 400%;
+  color: rgba(128, 128, 128, 0.533);
+}
 
 /* calendar */
 
