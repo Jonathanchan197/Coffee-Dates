@@ -74,7 +74,7 @@ form {
 }
 
 p {
-  padding-bottom: 1em;
+  padding-bottom: 0.5em;
 }
 /* 
 select {
@@ -459,23 +459,47 @@ select {
 
 /* Profile */
 
+.myname {
+  color: var(--light-color)
+}
+
 .profiletitle {
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .profile {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
-.pfpname {
-  text-align: center;
-  width: 40%;
+.border {
+  border-right: var(--light-color) 3px solid;
+  width: 50%;
+}
+
+.pfpicture {
+  text-align: right;
+  padding-right: 3em;
+  top: 10px;
+  bottom: 10px;
+  left:0px;
 }
 
 .infos {
-  width: 40%;
+  width: 47%;
+  text-align: left;
+}
+
+#editp {
+  text-align: center;
+  margin-left: 46%;
+  transition: 0.5s;
+}
+
+#editp:hover {
+  border: var(--green) solid 1px;
+  color: var(--green);
 }
 
