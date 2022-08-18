@@ -26,14 +26,7 @@ root.render(
         <Routes>
           <Route index element={<Home />} />
           <Route path={"sign-up"} element={<SignUp />} />
-          <Route
-            path={"setup"}
-            element={
-              <ProtectedRoute>
-                <Setup />
-              </ProtectedRoute>
-            }
-          />
+          <Route path={"setup"} element={<Setup />} />
           <Route path={"sign-in"} element={<SignIn />} />
           <Route
             path={"dashboard"}
@@ -46,7 +39,14 @@ root.render(
           <Route path={"profile"}>
             <Route path={":userId"} element={<Profile />} />
           </Route>
-          <Route path={"settings"} element={<Settings />} />
+          <Route
+            path={"settings"}
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path={"match"}
             element={
