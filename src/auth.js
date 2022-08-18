@@ -31,7 +31,7 @@ function useProvideAuth() {
     const { error, user } = await supabase.auth.signUp(
       { email, password },
       {
-        redirectTo: "https://main--stunning-entremet-0abbec.netlify.app//setup",
+        redirectTo: "https://main--stunning-entremet-0abbec.netlify.app/setup",
       }
     );
 
