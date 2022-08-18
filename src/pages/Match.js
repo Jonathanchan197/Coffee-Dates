@@ -114,7 +114,6 @@ const Match = () => {
     <div className="empty">
       <div className="yeahnah"><p>✕</p><p>✓</p></div>
       <h1 className="headings bounce">Find a Mentor</h1>
-      <div className="back"></div>
       <div className="card_container">
         {mentors.map((person) => (
           <TinderCard
