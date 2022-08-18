@@ -57,7 +57,7 @@ const ChatRoom = () => {
     <div>
       <h1 className="title bounce">Chat Room</h1>
     <div style={{ position: "relative", height: "500px" }}>
-      <MainContainer style={{borderRadius: "25px"}}>
+      <MainContainer>
         <ChatContainer>
           <MessageList>
             {messages.map(m => 
