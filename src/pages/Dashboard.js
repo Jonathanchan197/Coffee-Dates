@@ -24,17 +24,17 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <div>
+      <div className="dtitle">
         <h1 className="dashboardtitle"> Welcome back {name}!</h1>
       </div>
-      <div>
+      <div className="dclock">
         <Clock />
       </div>
-      <div>
-        <Calendar />
-      </div>
-      <div>
+      <div className="dtodo">
         <Todo />
+      </div>
+      <div className="dcalendar">
+        <Calendar />
       </div>
     </div>
   );
