@@ -101,7 +101,7 @@ const Match = () => {
 
   return (
     <div>
-      <h1>This is the Match page</h1>
+      <h1>Find a Mentor</h1>
       <div className="card_container">
         {mentors.map((person) => (
           <TinderCard

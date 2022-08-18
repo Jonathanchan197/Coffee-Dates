@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "../supabase";
 import { useAuth } from "../auth";
 import "../App.css";
 import "../index.css";
 
 const NavBar = () => {
   const auth = useAuth();
-  
+  const [isMentor, setIsMentor] = useState(null);
+
+  const fetchUserType = async () => {
+    const response = await supabase
+      .from("users")
+      .select()
+      .match({ id: auth.user.id });
+
+    if (response) {
+      setIsMentor(response.data[0].mentor);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserType();
+  }, [auth]);
+
   return (
     <header className={"header"} id="navigation">
       <div className="logoDiv">
@@ -33,21 +50,25 @@ const NavBar = () => {
         </li>
         {auth.user ? (
           <>
-          <li className="navLink">
+            <li className="navLink">
               <Link className="links" to={"/chats"}>
                 Chats
               </Link>
             </li>
-          <li className="navLink">
-              <Link className="links" to={"/match"}>
-                Matches
-              </Link>
-            </li>
-            <li className="navLink">
-              <Link className="links" to={"/mentornotifications"}>
-                Mentor
-              </Link>
-            </li>
+
+            {isMentor ? (
+              <li className="navLink">
+                <Link className="links" to={"/mentornotifications"}>
+                  Mentor
+                </Link>
+              </li>
+            ) : (
+              <li className="navLink">
+                <Link className="links" to={"/match"}>
+                  Find a Mentor
+                </Link>
+              </li>
+            )}
             <li className="navLink">
               <Link className="links" to={"/dashboard"}>
                 Dashboard
