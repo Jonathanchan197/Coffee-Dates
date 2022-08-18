@@ -111,9 +111,12 @@ function Todo() {
             </div>
           </div>
         </ul>
+        { items.length != 0 ?
         <button onClick={updateInfo} id="dtodobuttonsave">
           Save
         </button>
+        :
+        null}
       </div>
     </div>
   );
