@@ -17,7 +17,7 @@ import MentorNotification from "./pages/MentorNotification";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
         <NavBar />
@@ -71,5 +71,5 @@ root.render(
         </div>
       </BrowserRouter>
     </AuthProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

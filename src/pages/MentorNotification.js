@@ -4,40 +4,54 @@ import { useAuth } from "../auth";
 import userEvent from "@testing-library/user-event";
 
 const MentorNotification = () => {
-    const auth = useAuth();
-    const [mentees, setMentees] = useState ([]);
+  const auth = useAuth();
+  // const [menteeIds, setMenteeIds] = useState([]);
+  const [mentees, setMentees] = useState([]);
+  const menteeList = [];
 
-    useEffect(() => {
-        const fetchMentor = async () => {
-          const { data } = await supabase.from("mentors").select('mentees').match({id: auth.user.id});
-            data[0].mentees.map((user_id) => fetchMentee(user_id))
-            setMentees (...mentees, data)
-            console.log(mentees)
-          if (!data) {
-            alert("no mentors found!");
-            return;
-          }
-        };
-        fetchMentor();
-      }, []);
+  const fetchMenteeIds = async () => {
+    const { data } = await supabase
+      .from("mentors")
+      .select("mentees")
+      .match({ id: auth.user.id });
 
-    const fetchMentee = async (e) => {
-        const {data} = await supabase.from("mentees").select().match({id: e})
-        console.log(data)
+    if (data) {
+      console.log("MENTEE IDs:", data[0].mentees);
+      data[0].mentees.forEach((uid) => fetchMentees(uid));
     }
+  };
 
-    return (
-        <div>
-            test
-            {/* <div className="notification_container">
-                {mentees.map((user) => 
-                    <div className="mentee">
-                        <h2 key={user}>{user}</h2>
-                    </div>
-                )} 
-            </div> */}
-        </div>
-    )
-}
+  const fetchMentees = async (uid) => {
+    const response = await supabase.from("mentees").select().match({ id: uid });
+
+    if (response) {
+      console.log("RESPONSE:", response.data[0]);
+      menteeList.push(response.data[0]);
+      // console.log("MENTEES:", menteeList);
+      setMentees(menteeList);
+    }
+  };
+
+  useEffect(() => {
+    fetchMenteeIds();
+  }, []);
+
+  return (
+    <div>
+      <h1>Mentor Notifications</h1>
+      {console.log("MENTEES:", mentees)}
+      <div className="notification_container">
+        <ul>
+          {mentees.map((user) => (
+            <>
+              {console.log(`USER ${user.name}:`, user)}
+              <li key={user.id}>{user.name}</li>
+            </>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 export default MentorNotification;
