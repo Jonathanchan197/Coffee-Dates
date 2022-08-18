@@ -19,7 +19,6 @@ import ChatRoom from "./pages/ChatRoom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
   <AuthProvider>
     <BrowserRouter>
       <NavBar />
@@ -73,16 +72,10 @@ root.render(
             }
           />
           <Route path={"chatroom"}>
-            <Route
-              path={":chatId"}
-              element={
-                  <ChatRoom />
-              }
-            />
+            <Route path={":chatId"} element={<ChatRoom />} />
           </Route>
         </Routes>
       </div>
     </BrowserRouter>
   </AuthProvider>
-  // </React.StrictMode>
 );

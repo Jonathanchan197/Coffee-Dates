@@ -6,7 +6,7 @@ import "../index.css";
 
 const NavBar = () => {
   const auth = useAuth();
-
+  
   return (
     <header className={"header"} id="navigation">
       <div className="logoDiv">
