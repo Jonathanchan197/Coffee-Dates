@@ -46,38 +46,50 @@ const Profile = () => {
 
   return (
     <div>
-      <h1 className="profiletitle">Profile</h1>
+      <h1 className="profiletitle">Your Profile</h1>
       <div className="profile">
-        <div className="pfpname">
-          {avatarUrl ? (
-            <img
-              className="pfp"
-              src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${avatarUrl}`}
-              alt={avatarUrl}
-            />
-          ) : (
-            <p>
-              Time to get a profile picture, no one will swipe right on you.
-            </p>
-          )}
-          <p>{name}</p>
+        <div className="border">
+          <div className="pfpicture">
+            {avatarUrl ? (
+              <img
+                className="pfp"
+                src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${avatarUrl}`}
+                alt={avatarUrl}
+              />
+            ) : (
+              <p>
+                Time to get a profile picture, no one will swipe right on you.
+              </p>
+            )}
+          </div>
         </div>
         <div className="infos">
-          <p>Industry: {industry}</p>
+          <h2 className="myname">{name}</h2>
+          <p>
+            Industry: <span className="diffcolorfont">{industry}</span>
+          </p>
           <p>
             Skills:{" "}
             {skills.map((skill) =>
-              skills.length === 0 ? <></> : <p>{skill}</p>
+              skills.length === 0 ? (
+                <></>
+              ) : (
+                <p className="diffcolorfont">{skill}</p>
+              )
             )}
           </p>
-          <p>Website: {website}</p>
+          <p>
+            Website: <span className="diffcolorfont">{website}</span>
+          </p>
           <p>Biography</p>
-          <p>{bio}</p>
-          <Link to={"/settings"}>
-            <button className="success"> Edit Profile </button>
-          </Link>
+          <p>
+            <span className="diffcolorfont">{bio}</span>
+          </p>
         </div>
       </div>
+      <Link to={"/settings"}>
+        <button id="editp"> Edit Profile </button>
+      </Link>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../auth";
 import { supabase } from "../supabase";
+import { Link } from "react-router-dom";
 import "./Chats.css";
 
 const Chats = () => {
@@ -101,6 +102,16 @@ const Chats = () => {
           Chat with {participant.name}
         </div>
       ))}
+
+        {/* {rooms.map((chat) => 
+        <ul>
+            <li key={chat.id} class="chat">
+                <Link className="links" to={`/chatroom/${chat.id}`}>
+                    <p>{chat.id}</p>
+                </Link>
+            </li>
+            </ul>
+        )} */}
     </div>
   );
 };
