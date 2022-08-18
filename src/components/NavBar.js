@@ -40,7 +40,7 @@ const NavBar = () => {
             </li>
             <li className="navLink">
               <Link className="links" to={"/mentornotifications"}>
-                mentor
+                Mentor
               </Link>
             </li>
             <li className="navLink">
