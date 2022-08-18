@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 import { useAuth } from "../auth";
+import { Link } from "react-router-dom";
+
 const Profile = () => {
   const auth = useAuth();
 
@@ -46,30 +48,38 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="mob">
-        <h1>Profile</h1>
-        {avatarUrl ? (
-          <img
-            className="pfp"
-            src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${avatarUrl}`}
-            alt={avatarUrl}
-          />
-        ) : (
-          <p>Time to get a profile picture, no one will swipe right on you.</p>
-        )}
+      <h1>Profile</h1>
+      <div className="profile">
+        <div className="pfpname">
+          {avatarUrl ? (
+            <img
+              className="pfp"
+              src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${avatarUrl}`}
+              alt={avatarUrl}
+            />
+          ) : (
+            <p>
+              Time to get a profile picture, no one will swipe right on you.
+            </p>
+          )}
+          <p>Name: {name}</p>
+        </div>
+        <div className="infos">
+          <p>Industry: {industry}</p>
+          <p>
+            Skills:{" "}
+            {skills.map((skill) =>
+              skills.length === 0 ? <></> : <li>{skill}</li>
+            )}
+          </p>
+          <p>Website: {website}</p>
+          <p>Biography</p>
+          <p>{bio}</p>
+          <Link to={"/settings"}>
+            <button className="success"> Edit Profile </button>
+          </Link>
+        </div>
       </div>
-      <p>Name: {name}</p>
-      <p>Industry: {industry}</p>
-      <p>
-        Skills:{" "}
-        {skills.map((skill) =>
-          skills.length === 0 ? <></> : <li>{skill}</li>
-        )}
-      </p>
-      <p>Website: {website}</p>
-      <p>Biography</p>
-      <p>{bio}</p>
-      <button className="success"> Edit Profile </button>
     </div>
   );
 };

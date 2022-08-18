@@ -457,4 +457,21 @@ select {
 }
 
 
+/* Profile */
+
+.profile h1 {
+  text-align: center;
+}
+
+.profile {
+  display: flex;
+}
+
+.pfpname {
+  width: 30%;
+}
+
+.infos {
+  width: 65%;
+}
 

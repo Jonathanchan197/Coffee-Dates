@@ -53,11 +53,6 @@ const NavBar = () => {
                 Profile
               </Link>
             </li>
-            <li className="navLink">
-              <Link className="links" to={"/settings"}>
-                Settings
-              </Link>
-            </li>
             <button className="logout" color="error" onClick={auth.logout}>
               Sign Out
             </button>
