@@ -7,6 +7,7 @@ const Chats = () => {
   const auth = useAuth();
   const [isMentor, setIsMentor] = useState(false);
   const [rooms, setRooms] = useState([]);
+  const [participants, setParcipants] = useState([]);
 
   const checkMentor = async () => {
     const response = await supabase
