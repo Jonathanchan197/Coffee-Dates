@@ -3,7 +3,6 @@ import { useAuth } from "../auth";
 import { supabase } from "../supabase";
 import Clock from "../dashboard_tools/Clock";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import Todo from "../dashboard_tools/Todo";
 
 const Dashboard = () => {
@@ -34,7 +33,7 @@ const Dashboard = () => {
         <Todo />
       </div>
       <div className="dcalendar">
-        <Calendar />
+        <Calendar/>
       </div>
     </div>
   );

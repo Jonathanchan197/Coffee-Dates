@@ -5,9 +5,10 @@ import TinderCard from "react-tinder-card";
 import "./TinderCard.css";
 
 const Match = () => {
+  const auth = useAuth();
   const [mentors, setMentors] = useState([]);
   const [industry, setIndustry] = useState("");
-  const auth = useAuth();
+  let mentorList = [];
 
   const fetchIndustry = async () => {
     const response = await supabase
@@ -27,12 +28,23 @@ const Match = () => {
       .match({ industry: industry });
 
     if (data) {
-      setMentors(data);
-    }
+      mentorList = [...data];
+      const response = await supabase
+        .from("mentees")
+        .select("liked_mentors")
+        .match({ id: auth.user.id });
 
-    if (!data) {
-      alert("no mentors found!");
-      return;
+      if (response) {
+        response.data[0].liked_mentors.forEach((lm) => {
+          mentorList.forEach((m) => {
+            if (m.id === lm) {
+              mentorList = mentorList.filter(mentor => mentor !== m);
+            }
+          });
+        });
+      }
+      
+      setMentors(mentorList);
     }
   };
 
@@ -51,9 +63,9 @@ const Match = () => {
     let currentMentors = [];
 
     const { data } = await supabase
-    .from("mentees")
-    .select("liked_mentors")
-    .match({ id: auth.user.id });
+      .from("mentees")
+      .select("liked_mentors")
+      .match({ id: auth.user.id });
 
     if (data) {
       if (data[0].liked_mentors.length > 0) {
@@ -72,22 +84,22 @@ const Match = () => {
   };
 
   const handleSubmit = async (uid) => {
-    let currentMentees = [];
+    let currentRequests = [];
 
     const { data } = await supabase
       .from("mentors")
-      .select("mentees")
+      .select("requests")
       .match({ id: uid });
 
     if (data) {
-      if (data[0].mentees.length > 0) {
-        currentMentees = data[0].mentees;
+      if (data[0].requests !== null) {
+        currentRequests = data[0].requests;
       }
 
       //ADD MENTEE TO MENTORS
       const response = await supabase
         .from("mentors")
-        .upsert({ id: uid, mentees: [...currentMentees, auth.user.id] });
+        .upsert({ id: uid, requests: [...currentRequests, auth.user.id] });
       if (response) {
         addMentorToMentees(uid);
       }
