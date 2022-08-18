@@ -56,19 +56,25 @@ const Chats = () => {
 
   const fetchParticipantIds = async () => {
     if (isMentor) {
-      const { data } = await supabase.from("rooms").select("mentee_participant").match({mentor_participant: auth.user.id});
+      const { data } = await supabase
+        .from("rooms")
+        .select("mentee_participant")
+        .match({ mentor_participant: auth.user.id });
 
       if (data) {
         data.forEach((d) => fetchParticipants(d.mentee_participant));
       }
     } else {
-      const { data } = await supabase.from("rooms").select("mentor_participant").match({mentee_participant: auth.user.id});
+      const { data } = await supabase
+        .from("rooms")
+        .select("mentor_participant")
+        .match({ mentee_participant: auth.user.id });
 
       if (data) {
         data.forEach((d) => fetchParticipants(d.mentor_participant));
       }
     }
-  }
+  };
 
   const fetchParticipants = async (uid) => {
     let response;
@@ -96,18 +102,27 @@ const Chats = () => {
     <div class="chats_container">
       {participants.map((participant) => (
         <div key={participant.id} class="chat">
-          {participant.name}
-        </div>
-      ))}
+          <img
+            className="pfp"
+            src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${participant.avatar_url}`}
+            alt={`${participant.name}'s Avatar`}
+          />
 
-      {rooms.map((chat) => (
-        <ul>
-          <li key={chat.id} class="chat">
-            <Link className="links" to={`/chatroom/${chat.id}`}>
-              <p>{chat.id}</p>
-            </Link>
-          </li>
-        </ul>
+          <h2>{participant.name}</h2>
+
+          {rooms.map((room) =>
+            room.mentee_participant === participant.id ||
+            room.mentor_participant === participant.id ? (
+              <>
+              <p key={room.id} class="room">
+                <Link className="chatLink" to={`/chatroom/${room.id}`}>
+                  {room.id}
+                </Link>
+              </p>
+              </>
+            ) : null
+          )}
+        </div>
       ))}
     </div>
   );
