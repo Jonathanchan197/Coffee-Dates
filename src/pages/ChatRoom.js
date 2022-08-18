@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../supabase";
 import { useParams } from "react-router-dom";
-// import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+
 import {
   MainContainer,
   ChatContainer,
