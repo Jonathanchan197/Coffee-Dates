@@ -72,14 +72,14 @@ root.render(
               </ProtectedRoute>
             }
           />
-          <Route
-            path="chatroom/:id"
-            element={
-              <ProtectedRoute>
-                <ChatRoom />
-              </ProtectedRoute>
-            }
-          />
+          <Route path={"chatroom"}>
+            <Route
+              path={":chatId"}
+              element={
+                  <ChatRoom />
+              }
+            />
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>
