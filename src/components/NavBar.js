@@ -7,21 +7,22 @@ import "../index.css";
 
 const NavBar = () => {
   const auth = useAuth();
-  const [isMentor, setIsMentor] = useState(null);
+  const [isMentor, setIsMentor] = useState(false);
+
+  const fetchUserType = async () => {
+    const response = await supabase
+      .from("users")
+      .select()
+      .match({ id: auth.user.id });
+
+    if (response) {
+      setIsMentor(response.data[0].mentor);
+    }
+  };
 
   useEffect(() => {
-    const fetchUserType = async () => {
-      const response = await supabase
-        .from("users")
-        .select()
-        .match({ id: auth.user.id });
-  
-      if (response) {
-        setIsMentor(response.data[0].mentor);
-      }
-    };
     fetchUserType();
-  }, [isMentor]);
+  }, [auth]);
 
   return (
     <header className={"header"} id="navigation">
