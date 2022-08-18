@@ -19,8 +19,8 @@ import ChatRoom from "./pages/ChatRoom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <AuthProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <AuthProvider>
       <NavBar />
       <div className="all">
         <Routes>
@@ -76,6 +76,6 @@ root.render(
           </Route>
         </Routes>
       </div>
-    </BrowserRouter>
-  </AuthProvider>
+    </AuthProvider>
+  </BrowserRouter>
 );
