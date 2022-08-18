@@ -4,9 +4,10 @@ import { useAuth } from "../auth";
 import TinderCard from "react-tinder-card";
 
 const Match = () => {
+  const auth = useAuth();
   const [mentors, setMentors] = useState([]);
   const [industry, setIndustry] = useState("");
-  const auth = useAuth();
+  let mentorList = [];
 
   const fetchIndustry = async () => {
     const response = await supabase
@@ -26,12 +27,23 @@ const Match = () => {
       .match({ industry: industry });
 
     if (data) {
-      setMentors(data);
-    }
+      mentorList = [...data];
+      const response = await supabase
+        .from("mentees")
+        .select("liked_mentors")
+        .match({ id: auth.user.id });
 
-    if (!data) {
-      alert("no mentors found!");
-      return;
+      if (response) {
+        response.data[0].liked_mentors.forEach((lm) => {
+          mentorList.forEach((m) => {
+            if (m.id === lm) {
+              mentorList = mentorList.filter(mentor => mentor !== m);
+            }
+          });
+        });
+      }
+      
+      setMentors(mentorList);
     }
   };
 
