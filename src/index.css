@@ -412,9 +412,14 @@ select {
 
 .skill-line {
   margin: 0 auto;
-  width: 200px;
+  width: 250px;
   padding-bottom: 1em;
 }
+
+.skill {
+  text-align: center;
+}
+
 
 /* Setup - REview page */
 
@@ -450,3 +455,6 @@ select {
   padding-top: 1em;
   padding-bottom: 1em;
 }
+
+
+

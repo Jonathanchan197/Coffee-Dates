@@ -41,7 +41,7 @@ const Fourth = ({ formData, setFormData }) => {
           <br />
           <div className="listerlist">
           {formData.skills.length === 0
-            ? "No skills to show."
+            ? <p className="skill">No skills to show. </p>
             : formData.skills.map((s) => (
                 <p className="skill-line">
                   {s} <button onClick={(e) => removeSkill(e, s)}>Remove</button>
