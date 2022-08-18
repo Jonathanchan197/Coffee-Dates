@@ -58,8 +58,8 @@ const NavBar = () => {
 
             {isMentor ? (
               <li className="navLink">
-                <Link className="links" to={"/mentornotifications"}>
-                  Mentor
+                <Link className="links" to={"/requests"}>
+                  Requests
                 </Link>
               </li>
             ) : (
