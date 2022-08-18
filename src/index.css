@@ -224,7 +224,7 @@ select {
   border: 1px solid rgb(191, 104, 82);
   color: rgb(191, 104, 82);
   border-radius: 2px;
-  max-height: 27px;
+  max-height: 30px;
 }
 
 .logout:hover {
