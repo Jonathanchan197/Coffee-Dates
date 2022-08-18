@@ -13,7 +13,7 @@ import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import NavBar from "./components/NavBar";
 import Match from "./pages/Match";
-import MentorNotification from "./pages/MentorNotification";
+import Requests from "./pages/Requests";
 import Chats from "./pages/Chats";
 import ChatRoom from "./pages/ChatRoom";
 
@@ -63,10 +63,10 @@ root.render(
             }
           />
           <Route
-            path={"mentornotifications"}
+            path={"requests"}
             element={
               <ProtectedRoute>
-                <MentorNotification />
+                <Requests />
               </ProtectedRoute>
             }
           />
