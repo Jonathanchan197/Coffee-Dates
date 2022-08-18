@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../auth";
 import { supabase } from "../supabase";
 import { Link } from "react-router-dom";
-import "./Chats.css";
 
 const Chats = () => {
   const auth = useAuth();
@@ -99,29 +98,30 @@ const Chats = () => {
   }, [isMentor]);
 
   return (
-    <div class="chats_container">
+    <div class="chats">
+      <h1 className="bounce" >Your Messages</h1>
       {participants.map((participant) => (
-        <div key={participant.id} class="chat">
+        <div key={participant.id} className="conversation">
+          <div className="grouptitle">
           <img
-            className="pfp"
+            className="profilepic"
             src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${participant.avatar_url}`}
             alt={`${participant.name}'s Avatar`}
           />
-
-          <h2>{participant.name}</h2>
-
+          <h4 className="persontitle">{participant.name} - {participant.industry}</h4>
+          </div>
+        <div className="roombutton">
           {rooms.map((room) =>
             room.mentee_participant === participant.id ||
             room.mentor_participant === participant.id ? (
-              <>
-              <p key={room.id} class="room">
-                <Link className="chatLink" to={`/chatroom/${room.id}`}>
-                  Go to chat
+                <Link to={`/chatroom/${room.id}`}>
+                  <button key={room.id} className="roomlink">
+                    Chat
+                  </button>
                 </Link>
-              </p>
-              </>
             ) : null
           )}
+          </div>
         </div>
       ))}
     </div>

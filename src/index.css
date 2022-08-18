@@ -11,6 +11,7 @@
   --even-lighter-color: #bb9f89ac;
   --light-color: #A27B5C;
   --lighter-color: #DCD7C9;
+  --messagebackground: #c1bcb1;
   --green: rgb(110, 158, 110);
   --red: rgb(159, 86, 86);
 }
@@ -548,4 +549,83 @@ select {
 
 .access p {
   color: var(--light-color);
+}
+
+/* Dashboard */
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 4;
+}
+
+/*chat*/
+
+.chats {
+  background-color: var(--messagebackground);
+  height: 75vh;
+  width: 50vw;
+  border-radius: 25px;
+  padding: 2em;
+  margin: 0 auto;
+  box-shadow: 0px 0px 5px 1px var(--darker-color);
+}
+
+.conversation {
+  margin: 0 auto;
+  height: 60px;
+  width: 45vw;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-bottom: 1em;
+  border-radius: 30px;
+  background-color: var(--dark-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid transparent;
+  transition: 0.5s;
+}
+
+.conversation:hover {
+  border: 3px solid black;
+}
+
+.profilepic {
+  object-fit: cover;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 0.5em;
+}
+
+.grouptitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--lighter-color);
+}
+
+.chats h1 {
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+/* CHAT BUTTON */
+.roomlink { 
+  width: 90px;
+  background-color: #1DA1F2;
+  color: var(--lighter-color);
+  border: 3px solid transparent;
+  border-radius: 30px;
+  margin-right: 1em;
+  transition: 0.5s;
+}
+
+.roomlink:hover {
+  border: 3px solid white;
+  background-color: #78bce7;
+}
+
+.persontitle {
+  margin-right: 2em;
 }

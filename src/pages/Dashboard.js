@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { useAuth } from '../auth'
+import { useAuth } from "../auth";
 import { supabase } from "../supabase";
-import Clock from '../dashboard_tools/Clock';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import Clock from "../dashboard_tools/Clock";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import Todo from "../dashboard_tools/Todo";
-
 
 const Dashboard = () => {
   const [name, setName] = useState("");
@@ -24,13 +23,19 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="title"> Welcome back {name}!</h1>
-      < Clock />
-      < Calendar />
-      < Todo />
-      {/* <h2> Connections </h2> TODO: connect with supabase count howmany connections */}
-
+    <div className="dashboard">
+      <div>
+        <h1 className="dashboardtitle"> Welcome back {name}!</h1>
+      </div>
+      <div>
+        <Clock />
+      </div>
+      <div>
+        <Calendar />
+      </div>
+      <div>
+        <Todo />
+      </div>
     </div>
   );
 };
