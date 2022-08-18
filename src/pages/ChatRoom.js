@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../supabase";
 import { useParams } from "react-router-dom";
-// import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
   MainContainer,
   ChatContainer,
@@ -15,7 +15,7 @@ const ChatRoom = () => {
   const auth = useAuth();
   const { chatId } = useParams();
   const [messages, setMessages] = useState([]);
-  
+
   const fetchMessages = async () => {
     const {data} = await supabase.from('messages').select().match({room_id: chatId})
     setMessages(data)
