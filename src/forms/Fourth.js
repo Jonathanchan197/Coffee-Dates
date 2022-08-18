@@ -37,14 +37,17 @@ const Fourth = ({ formData, setFormData }) => {
       <div className="form-group">
         <label htmlFor="skills">Skills:</label>
         {console.log("TEST:", formData.skills)}
-        <ul>
+        <ul class="lister">
+          <br />
+          <div className="listerlist">
           {formData.skills.length === 0
             ? "No skills to show."
             : formData.skills.map((s) => (
-                <li>
+                <p className="skill-line">
                   {s} <button onClick={(e) => removeSkill(e, s)}>Remove</button>
-                </li>
+                </p>
               ))}
+          </div>
         </ul>
         <select
           name="skills"
