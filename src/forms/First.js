@@ -4,7 +4,7 @@ const First = ({ formData, setFormData }) => {
 
   return (
     <div>
-      <h2 className="question bounce">I am a {formData.isMentor ? "Mentor" : "Mentee"}</h2>
+      <h2 className="question bounce">I am a <span className="diffcolorfont"> {formData.isMentor ? "Mentor" : "Mentee"} </span> </h2>
       <div className="splitter">
         <div className="yes">
           <button

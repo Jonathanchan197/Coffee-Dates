@@ -104,7 +104,7 @@ const Review = ({ formData, setFormData }) => {
       <h3>Website: <span className="diffcolorfont">{formData.website}</span> </h3>
       <h3>Skills: </h3>
       <span className="diffcolorfont listofskills">{
-      formData.skills.length === 0 ? "No skills to show." : formData.skills.map((s) => (<p className="skill">{s}</p>))}
+      formData.skills.length === 0 ? <p>No skills to show.</p> : formData.skills.map((s) => (<p>{s}</p>))}
       </span>
       </div>
       <button
