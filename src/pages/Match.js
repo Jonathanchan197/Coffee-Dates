@@ -34,15 +34,17 @@ const Match = () => {
         .match({ id: auth.user.id });
 
       if (response) {
-        response.data[0].liked_mentors.forEach((lm) => {
-          mentorList.forEach((m) => {
-            if (m.id === lm) {
-              mentorList = mentorList.filter(mentor => mentor !== m);
-            }
+        if (response.data[0].liked_mentors !== null) {
+          response.data[0].liked_mentors.forEach((lm) => {
+            mentorList.forEach((m) => {
+              if (m.id === lm) {
+                mentorList = mentorList.filter((mentor) => mentor !== m);
+              }
+            });
           });
-        });
+        }
       }
-      
+
       setMentors(mentorList);
     }
   };
@@ -112,7 +114,10 @@ const Match = () => {
 
   return (
     <div className="empty">
-      <div className="yeahnah"><p>✕</p><p>✓</p></div>
+      <div className="yeahnah">
+        <p>✕</p>
+        <p>✓</p>
+      </div>
       <h1 className="headings bounce">Find a Mentor</h1>
       <div className="card_container">
         {mentors.map((person) => (
@@ -123,16 +128,15 @@ const Match = () => {
             onCardLeftScreen={() => onCardLeftScreen(person.id)}
             preventSwipe={["up", "down"]}
           >
-            
-              <div
-                style={{
-                  backgroundImage: `url("https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${person.avatar_url}")`,
-                }}
-                className="card"
-              >
-                <div></div>
-                <h3>{person.name}</h3>
-                <h4>{person.industry}</h4>
+            <div
+              style={{
+                backgroundImage: `url("https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${person.avatar_url}")`,
+              }}
+              className="card"
+            >
+              <div></div>
+              <h3>{person.name}</h3>
+              <h4>{person.industry}</h4>
             </div>
           </TinderCard>
         ))}
