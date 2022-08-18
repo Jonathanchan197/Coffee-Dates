@@ -21,7 +21,7 @@ const NavBar = () => {
       }
     };
     fetchUserType();
-  }, []);
+  }, [isMentor]);
 
   return (
     <header className={"header"} id="navigation">
