@@ -39,6 +39,11 @@ const NavBar = () => {
               </Link>
             </li>
             <li className="navLink">
+              <Link className="links" to={"/mentornotifications"}>
+                mentor
+              </Link>
+            </li>
+            <li className="navLink">
               <Link className="links" to={"/dashboard"}>
                 Dashboard
               </Link>

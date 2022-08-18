@@ -1,10 +1,10 @@
 const Third = ({ formData, setFormData }) => {
   return (
-    <div>
-      <h2>Tell me about yourself.</h2>
+    <div className="third">
+      <h2 className="bounce" >Tell me about yourself.</h2>
 
       <div className="form-group">
-        <label htmlFor="avatar">Choose Avatar:</label>
+        <label htmlFor="avatar">Choose Avatar</label>
         <br />
         <input
           type="file"
@@ -16,7 +16,7 @@ const Third = ({ formData, setFormData }) => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="name">Display name:</label>
+        <label htmlFor="name">Display name</label>
         <br />
         <input
           className="textField"
@@ -27,7 +27,7 @@ const Third = ({ formData, setFormData }) => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="industry">Biography:</label>
+        <label htmlFor="industry">Biography</label>
         <br />
         <textarea
           className="textbox"
@@ -37,7 +37,7 @@ const Third = ({ formData, setFormData }) => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="website">Website:</label>
+        <label htmlFor="website">Website</label>
         <br />
         <input
           className="textField"

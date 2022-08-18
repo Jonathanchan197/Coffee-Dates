@@ -6,7 +6,6 @@ import "./TinderCard.css";
 
 const Match = () => {
   const [people, setPeople] = useState([]);
-  const [currentMentor, setCurrentMentor] = useState([])
   const [mentees, setMentees] = useState([])
   const auth = useAuth();
 
@@ -22,9 +21,11 @@ const Match = () => {
   };
 
   const handleSubmit = async (e) => {
-    const {data} = await supabase.from('mentors')
-        .upsert({id: e, mentees: auth.user.id})
-  };  
+    const {data} = await supabase.from('mentors').select('mentees').match({id: e})
+    const response = await supabase.from('mentors')
+    .upsert({id: e, mentees: [...data[0].mentees, auth.user.id]})
+  }; 
+
 
   useEffect(() => {
     const fetchMentor = async () => {

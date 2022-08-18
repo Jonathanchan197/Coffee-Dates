@@ -16,10 +16,10 @@ const Second = ({formData, setFormData}) => {
   }, []);
 
   return (
-    <div>
-      <h2>What Industry are you in?</h2>
+    <div className="second">
+      <h2 className="bounce" >What Industry are you in?</h2>
       <div className="form-group">
-        <label htmlFor="industry">Industry:</label>
+        <label htmlFor="industry"></label>
         <br />
         <select
           name="industry"
