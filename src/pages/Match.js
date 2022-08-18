@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../supabase";
 import { useAuth } from "../auth";
+import { Link } from "react-router-dom";
 import TinderCard from "react-tinder-card";
 
 const Match = () => {
@@ -135,7 +136,15 @@ const Match = () => {
               className="card"
             >
               <div></div>
-              <h3>{person.name}</h3>
+              <h3>
+                <Link
+                  to={`/profile/${person.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {person.name}
+                </Link>
+              </h3>
               <h4>{person.industry}</h4>
             </div>
           </TinderCard>
