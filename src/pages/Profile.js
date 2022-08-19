@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabase";
+import { useAuth } from "../auth";
 import { Link, useParams } from "react-router-dom";
 
 const Profile = () => {
+  const auth = useAuth();
   const { userId } = useParams();
   const [avatarUrl, setAvatarUrl] = useState("");
   const [name, setName] = useState("");
@@ -87,9 +89,11 @@ const Profile = () => {
           </p>
         </div>
       </div>
-      <Link to={"/settings"}>
-        <button id="editp"> Edit Profile </button>
-      </Link>
+      {auth.user.id === userId ? (
+        <Link to={"/settings"}>
+          <button id="editp"> Edit Profile </button>
+        </Link>
+      ) : null}
     </div>
   );
 };

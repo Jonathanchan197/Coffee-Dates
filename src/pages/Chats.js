@@ -103,7 +103,7 @@ const Chats = () => {
             src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${participant.avatar_url}`}
             alt={`${participant.name}'s Avatar`}
           />
-          <h4 className="persontitle">{participant.name} - {participant.industry}</h4>
+          <h4 className="persontitle"><Link to={`/profile/${participant.id}`}>{participant.name} - {participant.industry}</Link></h4>
           </div>
         <div className="roombutton">
           {rooms.map((room) =>
