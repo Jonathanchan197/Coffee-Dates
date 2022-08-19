@@ -137,13 +137,13 @@ const Match = () => {
             >
               <div></div>
               <h3>
-                <Link
+                {/* <Link
                   to={`/profile/${person.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                >
+                > */}
                   {person.name}
-                </Link>
+                {/* </Link> */}
               </h3>
               <h4>{person.industry}</h4>
             </div>

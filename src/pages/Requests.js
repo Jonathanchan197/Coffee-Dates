@@ -82,8 +82,6 @@ const Requests = () => {
                 <li key={user.id}>
                   <Link
                     to={`/profile/${user.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     <img
                       className="pfp"
