@@ -26,14 +26,7 @@ root.render(
         <Routes>
           <Route index element={<Home />} />
           <Route path={"sign-up"} element={<SignUp />} />
-          <Route
-            path={"setup"}
-            element={
-              <ProtectedRoute>
-                <Setup />
-              </ProtectedRoute>
-            }
-          />
+          <Route path={"setup"} element={<Setup />} />
           <Route path={"sign-in"} element={<SignIn />} />
           <Route
             path={"dashboard"}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "../supabase";
 import { useAuth } from "../auth";
 import userEvent from "@testing-library/user-event";
@@ -79,10 +80,29 @@ const Requests = () => {
               <>
                 {console.log(`USER ${user.name}:`, user)}
                 <li key={user.id}>
+                  <Link
+                    to={`/profile/${user.id}`}
+                  >
+                    <img
+                      className="pfp"
+                      src={`https://yvjzibmcgvuhvzzulirq.supabase.co/storage/v1/object/public/${user.avatar_url}`}
+                      alt={`${user.name}'s Avatar`}
+                    />
+                  </Link>
                   <h2>{user.name}</h2>
                 </li>
-                <button className="accept" onClick={() => handleAccept(user.id)}>Accept</button>
-                <button className="decline" onClick={() => handleRejection(user.id)}>Reject</button>
+                <button
+                  className="accept"
+                  onClick={() => handleAccept(user.id)}
+                >
+                  Accept
+                </button>
+                <button
+                  className="decline"
+                  onClick={() => handleRejection(user.id)}
+                >
+                  Reject
+                </button>
               </>
             ))}
           </ul>

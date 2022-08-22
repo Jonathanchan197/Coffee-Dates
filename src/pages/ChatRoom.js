@@ -15,7 +15,7 @@ const ChatRoom = () => {
   const auth = useAuth();
   const { chatId } = useParams();
   const [messages, setMessages] = useState([]);
-  
+
   const fetchMessages = async () => {
     const {data} = await supabase.from('messages').select().match({room_id: chatId})
     setMessages(data)
@@ -23,7 +23,7 @@ const ChatRoom = () => {
   
   const handleSubmit = async (e) => {
     const {data} = await supabase.from('messages').insert({content: e, name: auth.user.id, room_id: chatId})
-    setMessages([...messages, {...data[0]}])
+    // setMessages([...messages, {...data[0]}]) // this was causing the double posting
     console.log(data)
   }
 
@@ -57,7 +57,7 @@ const ChatRoom = () => {
     <div>
       <h1 className="title bounce">Chat Room</h1>
     <div style={{ position: "relative", height: "500px" }}>
-      <MainContainer style={{borderRadius: "25px"}}>
+      <MainContainer>
         <ChatContainer>
           <MessageList>
             {messages.map(m => 
