@@ -14,6 +14,7 @@ Coffee Date is a simple web app to connect people with experienced mentors in th
 * [Mentors](#mentors)
 * [Chats](#chats)
 * [Resources](#resources)
+* [Screenshots](#screenshots)
 
 ## Technologies
 * React 18.2.0 (w/ React Router Dom 6.3.0)
@@ -46,6 +47,14 @@ Mentors can see requests by clicking on the "Requests" link in the navigation ba
 
 ### Chats
 Mentors and mentees have access to the "Chats" page. If a mentor has accepted a request, they can then choose to chat with the new mentee, and likewise, the mentee can chat with them in their own chatroom. From here, they can start their mentorship and set up their first coffee date!
+
+### Screenshots
+![Homepage](/public/screenshots/LoggedIn.png)
+![Profile](/public/screenshots/Profile.png)
+![DashBoard](/public/screenshots/Dashboard.png)
+![Matches](/public/screenshots/Match.png)
+![Chats](/public/screenshots/Chats.png)
+![PrivateMessage](/public/screenshots/Chat.png)
 
 ## Resources
 * [Supabase documentation](https://supabase.com/docs)
