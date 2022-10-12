@@ -16,6 +16,13 @@ Coffee Date is a simple web app to connect people with experienced mentors in th
 * [Resources](#resources)
 * [Screenshots](#screenshots)
 
+## Video Demo
+Please click this external image link to view a walkthrough of Coffee Dates.
+
+[![www.google.com](/public/screenshots/Play.png)](https://youtu.be/abYDWk6clMo)
+
+
+
 ## Technologies
 * React 18.2.0 (w/ React Router Dom 6.3.0)
 * Yarn 1.22.19
